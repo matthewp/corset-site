@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*background: linear-gradient(315deg, rgba(11,211,211,1) 40%, rgba(248,144,231,1) 100%);*/
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark {
+  background-color: var(--gray-9);
+}

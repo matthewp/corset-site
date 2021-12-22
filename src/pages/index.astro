@@ -1,0 +1,35 @@
+---
+import CommonHead from '../components/CommonHead.astro';
+import NavHeader from '../components/NavHeader.astro';
+import * as info from '../info.js';
+---
+
+<html lang="en">
+<head>
+	<CommonHead />
+	<title>{ info.project }</title>
+	<base href=".">
+	<style>
+		@import "../styles/main.css";
+	</style>
+</head>
+<body class="welcome">
+	<NavHeader title={ info.project } />
+	<header>
+		<section class="hero">
+			<h1 class="hero-message">
+				<div>{ info.project }</div>
+				<div>Bindings for your DOM</div>
+			</h1>
+			<p class="under-hero">The power of declarative UI, without the complex requirements of SPA frameworks. Use any backend you like, bind to the HTML you already produced.</p>
+			<div class="button-list">
+				<a href="getting-started/" class="primary button">Get started</a>
+				<a href="docs/" class="button">Documentation</a>
+			</div>
+		</section>
+		<picture class="promo-art">
+			<img src="https://doodleipsum.com/700x700/outline?bg=3b5bdb" height="800" width="800" alt="a random doodle">
+		</picture>
+	</header>
+</body>
+</html>

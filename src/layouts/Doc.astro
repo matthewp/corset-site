@@ -1,0 +1,25 @@
+---
+import CommonHead from '../components/CommonHead.astro';
+import NavHeader from '../components/NavHeader.astro';
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+<head>
+	<CommonHead />
+	<title>Untitled DSL Project</title>
+	<base href=".">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
+	<style global>
+    @import "../styles/doc.css";
+	</style>
+</head>
+<body class="getting-started">
+	<NavHeader title="Getting Started" />
+  <article>
+    <h1>{ title }</h1>
+    <slot />
+  </article>
+</body>
+</html>

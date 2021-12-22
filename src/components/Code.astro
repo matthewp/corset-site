@@ -1,0 +1,7 @@
+---
+import { Prism } from 'astro/components';
+
+const { lang, code } = Astro.props;
+---
+
+<Prism lang={lang} code={code.trim()} />

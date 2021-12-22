@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Doc.astro';
+import * as info from '../info.js';
+import Code from '../components/Code.astro';
+---
+
+<Layout title="Getting started">
+	<Fragment>
+		<section class="doc-section">
+			<div>Using <strong>{ info.project }</strong> is as simple as reaching for the CDN: <strong>{ info.cdnURL }</strong></div>
+
+
+			<Code lang="js" code={`
+import dsl from '${info.cdnURL}';
+
+const user = { name: 'Wilbur' };
+
+dsl\`
+  .name {
+    --name: \${user.name};
+    text: var(--name);
+  }
+\`.update(document.body);
+`} />
+		</section>
+	</Fragment>
+</Layout>
+

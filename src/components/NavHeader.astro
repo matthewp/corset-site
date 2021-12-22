@@ -1,0 +1,42 @@
+---
+import GitHubIcon from './GitHub.astro';
+import * as info from '../info.js';
+//const { title } = Astro.props;
+---
+<style global>
+.site-navigation {
+  padding-block: var(--size-2);
+  padding-inline: var(--size-6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-navigation h1 {
+  font-size: var(--font-size-4);
+}
+
+.site-navigation.dark .page-title h1 a {
+  color: var(--blue-1);
+  text-decoration: none;
+}
+
+.site-navigation-links {
+  display: flex;
+  align-items: center;
+}
+
+.github-icon {
+  stroke: unset;
+  fill: var(--grape-0);
+}
+</style>
+<nav class="site-navigation dark">
+  <header class="page-title">
+    <h1>
+      <a href="/">{ info.project }</a>
+    </h1>
+  </header>
+  <div class="site-navigation-links">
+    <a href="https://github.com/matthewp/untitled-dsl-project"><GitHubIcon /></a>
+  </div>
+</nav>

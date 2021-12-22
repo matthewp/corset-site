@@ -1,0 +1,12 @@
+article {
+  padding: var(--size-4) var(--size-8);
+}
+
+.doc-section {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+pre[class*=language-] {
+  max-inline-size: unset;
+}
