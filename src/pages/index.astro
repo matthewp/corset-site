@@ -1,6 +1,7 @@
 ---
 import CommonHead from '../components/CommonHead.astro';
 import NavHeader from '../components/NavHeader.astro';
+import Logo from '../components/Logo.astro';
 import * as info from '../info.js';
 ---
 
@@ -9,17 +10,17 @@ import * as info from '../info.js';
 	<CommonHead />
 	<title>{ info.project }</title>
 	<base href=".">
-	<style>
+	<style global>
 		@import "../styles/main.css";
 	</style>
 </head>
 <body class="welcome">
 	<NavHeader title={ info.project } />
-	<header>
+	<header class="hero-header">
 		<section class="hero">
 			<h1 class="hero-message">
 				<div>{ info.project }</div>
-				<div>Bindings for your DOM</div>
+				<div>Declarative bindings</div>
 			</h1>
 			<p class="under-hero">The power of declarative UI, without the complexity of <abbr title="Single-page application">SPA</abbr> frameworks. Use any backend you like; bind to the HTML you already produced.</p>
 			<div class="button-list">
@@ -28,7 +29,7 @@ import * as info from '../info.js';
 			</div>
 		</section>
 		<picture class="promo-art">
-			<img src="https://doodleipsum.com/700x700/outline?bg=3b5bdb" height="800" width="800" alt="a random doodle">
+			<Logo />
 		</picture>
 	</header>
 </body>

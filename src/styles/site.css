@@ -1,6 +1,9 @@
 html, body {
   margin: 0;
   padding: 0;
+  --corset-logo-color: var(--pink-4);
+
+  --size-12-point-5: 13rem;
 }
 
 body {
@@ -11,4 +14,8 @@ body {
 
 .dark {
   background-color: var(--gray-9);
+}
+
+.corset-logo {
+  fill: var(--corset-logo-color);
 }
