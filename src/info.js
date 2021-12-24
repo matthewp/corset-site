@@ -1,7 +1,8 @@
 
 export const project = 'Corset';
 
-const CDNURL = version => `https://cdn.spooky.click/untitled-dsl-project/${version}/dsl.js`;
+const CDNURL = version => `https://cdn.corset.dev/${version}/dsl.js`;
 
-export const version = '0.0.16';
+export const version = '0.1.4';
 export const cdnURL = CDNURL(version);
+export const npmPkg = 'corset';

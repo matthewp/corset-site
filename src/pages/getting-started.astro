@@ -4,27 +4,46 @@ import { Page, Block,  Code, info } from '../components/DocPage.js';
 
 <Page title="Getting started">
 	<Block>
-			<p><strong>{ info.project }</strong> can be used a couple of different ways. If you are using <a href="https://www.npmjs.com/">npm</a>, there is a package available. { info.project } can also be used via a CDN which works great outside of that workflow.</p>
+			<p><strong>{ info.project }</strong> can be used a couple of different ways. If you are using <a href="https://www.npmjs.com/package/corset">npm</a>, there is a package available. { info.project } can also be used via a CDN which works great outside of that workflow.</p>
 	</Block>
 
 	<section>
 		<h2>With the CDN</h2>
 		<Block>	
-			<p>{ info.project } is accessible through a CDN at <strong>cdn.spooky.click</strong>. This is the easiest way to get started using it.</p>
-			<p>The default export is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged template f`ction</a> that takes a string of a CSS-like language.</p>
+			<p>{ info.project } is accessible through a CDN at <strong>cdn.corset.dev</strong>. This is the easiest way to get started using it.</p>
+			<p>The default export is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged template function</a> that takes a string of a CSS-like language.</p>
 
 			<Code slot="code" lang="js" code={`
-import dsl from '${info.cdnURL}';
+import sheet from '${info.cdnURL}';
 
 const user = { name: 'Wilbur' };
 
-dsl\`
+sheet\`
   .name {
     --name: \${user.name};
     text: var(--name);
   }
 \`.update(document.body);
 `}></Code>
+		</Block>
+	</section>
+
+	<section>
+		<h2>With npm</h2>
+		<Block>
+			<p>{ info.project } can be installed from <a href="https://www.npmjs.com/package/corset"></a> and used with any bundler.</p>
+			<Code slot="code" lang="js" code={`
+import dsl from '${info.npmPkg}';	
+
+const user = { name: 'Wilbur' };
+
+sheet\`
+  .name {
+    --name: \${user.name};
+    text: var(--name);
+  }
+\`.update(document.body);
+`} />
 		</Block>
 	</section>
 
