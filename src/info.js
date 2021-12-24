@@ -1,5 +1,5 @@
 
-export const project = 'Untitled DSL Project';
+export const project = 'Corset';
 
 const CDNURL = version => `https://cdn.spooky.click/untitled-dsl-project/${version}/dsl.js`;
 
