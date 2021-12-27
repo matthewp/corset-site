@@ -8,7 +8,8 @@ article {
 
 .doc-block-content {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 5fr 4fr;
+  column-gap: var(--size-3);
 }
 
 .doc-block > h2, .doc-block > h3, .doc-block > h4, .doc-block > h5 {
@@ -17,8 +18,4 @@ article {
 
 .doc-block-content p {
   margin-block: var(--size-fluid-1);
-}
-
-pre[class*=language-] {
-  max-inline-size: unset;
 }

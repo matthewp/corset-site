@@ -15,6 +15,7 @@ const { title } = Astro.props;
 	<style global>
     @import "../styles/doc.css";
 	</style>
+  <link rel="preload" as="fetch" href={info.cdnWasmURL} crossorigin>
 </head>
 <body class="getting-started">
 	<NavHeader title="Getting Started" />
