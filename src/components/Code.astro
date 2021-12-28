@@ -13,6 +13,7 @@ const code = raw.trim();
     <button type="button" class="code-snippet-copy">
       <CopyIcon title="Copy to clipboard" />
     </button>
+    <div class="code-snippet-copied-notification" aria-hidden="true">Copied</div>
   </div>
 </figure>
 <script type="module" src={scriptUrl} hoist></script>
@@ -39,13 +40,18 @@ const code = raw.trim();
 
 .code-snippet-copy {
   background: var(--violet-7);
-  color: var(--violet-2);
+  color: var(--violet-3);
   border-radius: var(--border-radius);
   padding: var(--size-1);
+  z-index: 1;
+}
+
+.code-snippet-copy:hover {
+  color: var(--violet-2);
 }
 
 .code-snippet-copy-area:not(:hover) .code-snippet-copy {
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
 .code-snippet-copy svg {
@@ -53,5 +59,21 @@ const code = raw.trim();
   height: var(--size-7);
   stroke: currentColor;
   fill: transparent;
+}
+
+.code-snippet-copied-notification {
+  position: absolute;
+  writing-mode: vertical-rl;
+  margin-right: var(--size-2);
+  z-index: 0;
+  background: var(--violet-9);
+  color: var(--violet-3);
+  padding: var(--size-1) 0;
+  transform: translateY(-9px) scale(0.6);
+  transition: transform .2s linear;
+}
+
+.code-snippet-copied-notification[aria-hidden=false] {
+  transform: translateY(45px) scale(1);
 }
 </style>
