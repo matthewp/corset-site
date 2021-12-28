@@ -7,17 +7,23 @@ const { lang, code: raw } = Astro.props;
 const code = raw.trim();
 ---
 
-<figure class="code-snippet" data-code={code}>
-  <Prism lang={lang} code={code} />
-  <div class="code-snippet-copy-area">
-    <button type="button" class="code-snippet-copy">
-      <CopyIcon title="Copy to clipboard" />
-    </button>
-    <div class="code-snippet-copied-notification" aria-hidden="true">Copied</div>
-  </div>
-</figure>
+<code-snippet>
+  <figure class="code-snippet" data-code={code}>
+    <Prism lang={lang} code={code} />
+    <div class="code-snippet-copy-area">
+      <button type="button" class="code-snippet-copy">
+        <CopyIcon title="Copy to clipboard" />
+      </button>
+      <div class="code-snippet-copied-notification" aria-hidden="true">Copied</div>
+    </div>
+  </figure>
+</code-snippet>
 <script type="module" src={scriptUrl} hoist></script>
 <style global>
+code-snippet {
+  display: block;
+}
+
 .code-snippet {
   place-items: unset;
   position: relative;
