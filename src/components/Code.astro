@@ -50,8 +50,9 @@ const code = raw.trim();
   color: var(--violet-2);
 }
 
-.code-snippet-copy-area:not(:hover) .code-snippet-copy {
-  /*opacity: 0;*/
+.code-snippet-copy-area:not(:hover) .code-snippet-copy,
+.code-snippet-copy-area:not(:hover) .code-snippet-copied-notification {
+  opacity: 0;
 }
 
 .code-snippet-copy svg {
