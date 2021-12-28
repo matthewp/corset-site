@@ -14,16 +14,18 @@ import { Page, Block,  Code, info } from '../components/DocPage.js';
 			<p>The default export is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged template function</a> that takes a string of a CSS-like language.</p>
 
 			<Code slot="code" lang="js" code={`
-import sheet from '${info.cdnURL}';
+import sheet, { mount } from '${info.cdnURL}';
 
-const user = { name: 'Wilbur' };
+mount(document.body, state => {
+  const { name = 'Wilbur' } = state;
 
-sheet\`
-  .name {
-    --name: \${user.name};
-    text: var(--name);
-  }
-\`.update(document.body);
+  return sheet\`
+    .name {
+      --name: \${name};
+      text: var(--name);
+    }
+  \`;
+});
 `}></Code>
 		</Block>
 	</section>
@@ -33,16 +35,18 @@ sheet\`
 		<Block>
 			<p>{ info.project } can be installed from <a href="https://www.npmjs.com/package/corset">npm</a> and used with any bundler. Install the <strong>{ info.npmPkg }</strong> on npm and import the default export like so:</p>
 			<Code slot="code" lang="js" code={`
-import sheet from '${info.npmPkg}';
+import sheet, { mount } from '${info.npmPkg}';
 
-const user = { name: 'Wilbur' };
+mount(document.body, state => {
+  const { name = 'Wilbur' } = state;
 
-sheet\`
-  .name {
-    --name: \${user.name};
-    text: var(--name);
-  }
-\`.update(document.body);
+  return sheet\`
+    .name {
+      --name: \${name};
+      text: var(--name);
+    }
+  \`;
+});
 `} />
 		</Block>
 	</section>
