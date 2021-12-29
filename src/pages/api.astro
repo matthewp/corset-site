@@ -1,17 +1,22 @@
 ---
-import CommonHead from '../components/CommonHead.astro';
-import NavHeader from '../components/NavHeader.astro';
+import { Page, Block,  Code, info } from '../components/DocPage.js';
 ---
 
-<html>
-<head>
-  <CommonHead />
-</head>
-<body>
-  <NavHeader title="API" />
+<Page title="API">
+	<Block>
+    This page contains links to the major sections API documentation on using Corset. To learn on getting started with Corset, see the <a href="installation/">Getting started guides</a> instead.
+  </Block>
 
-  <main>
-    Content here
-  </main>
-</body>
-</html>
+  <section>
+    <h2>Reference</h2>
+
+    <dt>
+      <a href="properties/">Properties</a>
+    </dt>
+    <dd>Long and shorthand properties for binding to elements.</dd>
+    <dt>
+      <a href="functions/">Value Functions</a>
+    </dt>
+    <dd>Functions usable as values such as <code>var()</code> and <code>bind()</code>.</dd>
+  </section>
+</Page> 

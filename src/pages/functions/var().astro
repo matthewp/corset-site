@@ -1,0 +1,39 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+---
+
+<Page title="var()">
+  <Block>
+    <p>The <code>var()</code> function can be used to insert the value of a custom property that exists within the cascade of the selector. It's intended to be an exact parallel to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var()">CSS var()</a>.</p>
+  </Block>
+
+  <section>
+    <h2>Referencing a property on a parent</h2>
+
+    <Block>
+      <p>You can use <code>var()</code> to store a property on an element, and then use it on any child element. It can also reference properties stored on the same element.</p>
+
+      <Code slot="code" lang="css" code={`
+.user {
+  --name: \${'Wilbur'};
+}
+
+.user .name {
+  text: var(--name);
+}
+`}></Code>
+    </Block>
+
+    <Block>
+      <p>You can reference any type of value with <code>var()</code>. For example here we are referencing a function that is stored as a custom property and passing it to an event handler.</p>
+
+      <Code slot="code" lang="css" code={`
+form {
+  --handler: \${handleForm};
+
+  event: submit var(--handler);
+}      
+`}></Code>
+    </Block>
+  </section>
+</Page>

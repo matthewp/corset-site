@@ -1,16 +1,21 @@
 ---
 import CommonHead from '../components/CommonHead.astro';
 import NavHeader from '../components/NavHeader.astro';
+import Footer from '../components/Footer.astro';
 import * as info from '../info.js';
+import npath from 'node:path';
 
+const { url } = Astro.request;
 const { title } = Astro.props;
+
+const base = npath.relative(url.pathname, '/') || '.';
 ---
 
 <html lang="en">
 <head>
 	<CommonHead />
-	<title>{ info.project }</title>
-	<base href=".">
+	<title>{ title } | { info.project }</title>
+	<base href={base}>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
 	<style global>
     @import "../styles/doc.css";
@@ -20,8 +25,9 @@ const { title } = Astro.props;
 <body class="getting-started">
 	<NavHeader title="Getting Started" />
   <article>
-    <h1>{ title }</h1>
+    <h1 class="doc-title">{ title }</h1>
     <slot />
   </article>
+  <Footer />
 </body>
 </html>

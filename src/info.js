@@ -1,5 +1,5 @@
-
 export const project = 'Corset';
+export const year = new Date().getFullYear();
 
 const CDNURL = version => `https://cdn.corset.dev/${version}/main.js`;
 const CDNWASMURL = version => `https://cdn.corset.dev/${version}/main.wasm`;

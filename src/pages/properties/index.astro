@@ -1,0 +1,85 @@
+---
+import { Page, Block } from '../../components/DocPage.js';
+---
+
+<Page title="Properties">
+  <Block>
+    <p>In Corset, <strong>properties</strong> are used to bind to aspects of an element, such as its attributes, text, and events.</p>
+    <p>Corset includes both properties and <strong>shorthand properties</strong>, properties that combine multiple properties together.</p>
+    <p>Corset also contains multi-binding properties; properties such as event and attr can be used to bind to multiple things.</p>
+  </Block>
+
+  <section>
+    <h2>Element properties</h2>
+    <p>These properties bind to the major parts of an element.</p>
+    <Block>
+      <dt>
+        <a href="properties/text/">text</a>
+      </dt>
+      <dd>Set the text content of an element.</dd>
+      <dt>
+        <a href="properties/class-toggle/">class-toggle</a>
+      </dt>
+      <dd>Toggle classes on an element.</dd>
+      <dt>
+        <a href="properties/attr/">attr</a>
+      </dt>
+      <dd>Set values of attributes on an element.</dd>
+      <dt>
+        <a href="properties/attr-toggle/">attr-toggle</a>
+      </dt>
+      <dd>Toggle boolean attributes on an element.</dd>
+      <dt>
+        <a href="properties/event/">event</a>
+      </dt>
+      <dd>Add event listeners on an element.</dd>
+      <dt>
+        <a href="properties/prop/">prop</a>
+      </dt>
+      <dd>Set properties on the DOM element.</dd>
+      <dt>
+        <a href="properties/data/">data</a>
+      </dt>
+      <dd>Set dataset values on an element.</dd>
+    </Block>
+  </section>
+
+  <section>
+    <h2>Looping properties</h2>
+    <p>These properties are used to define the behavior of an iterable (each).</p>
+
+    <Block>
+      <dt>
+        <a href="properties/each/">each</a>
+      </dt>
+      <dd>Shorthand property to define an each iteration.</dd>
+      <dt>
+        <a href="properties/each-items/">each-items</a>
+      </dt>
+      <dd>Set the items (such an array) to iterate on.</dd>
+      <dt>
+        <a href="properties/each-temmplate/">each-template</a>
+      </dt>
+      <dd>Sets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a> element to use for each item in the iterable.</dd>
+      <dt>
+        <a href="properties/each-key/">each-key</a>
+      </dt>
+      <dd>Defines a key to use to identify items in the iterable.</dd>
+    </Block>
+  </section>
+
+  <section>
+    <h2>Other properties</h2>
+    <p>These properties attach behavior to elements when matched.</p>
+    <Block>
+      <dt>
+        <a href="properties/attach-template/">attach-template</a>
+      </dt>
+      <dd>Replace the children of an element with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a>.</dd>
+      <dt>
+        <a href="properties/mount/">mount</a>
+      </dt>
+      <dd>Mount an updater function to an element that defines state and a Corset sheet to attach.</dd>
+    </Block>
+  </section>
+</Page>

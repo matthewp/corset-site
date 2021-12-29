@@ -1,0 +1,77 @@
+---
+import { Page, Block } from '../../components/DocPage.js';
+---
+
+<Page title="Value Functions">
+	<Block>
+    <strong>Corset value functions</strong> are functions that can be used as values for properties in declarations, that represent contextual values or take arguments for calculation.
+  </Block>
+
+  <section>
+    <h2>Data manipulation functions</h2>
+    <p>These functions take parameters, such as insertion values or custom variables and manipulate them to calculate a response.</p>
+
+    <Block>
+      <dt>
+        <a href="functions/bind()/">bind()</a>
+      </dt>
+      <dd>Creates a function with the first <code>N</code> arguments bound.</dd>
+      <dt>
+        <a href="functions/get()/">get()</a>
+      </dt>
+      <dd>Gets a value from an object (like the dot-syntax in JavaScript).</dd>
+    </Block>
+  </section>
+
+  <section>
+    <h2>Data extraction functions</h2>
+    <p>These functions allow you to extract values from the DOM.</p>
+
+    <Block>
+      <dt>
+        <a href="functions/data()/">data()</a>
+      </dt>
+      <dd>Gets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">dataset</a> value of an element (equivalent to <code>el.dataset.*</code>).</dd>
+    </Block>
+  </section>
+
+  <section>
+    <h2>Each-scoped functions</h2>
+    <p>These functions are scoped to within a single item within an each clause.</p>
+
+    <Block>
+      <dt>
+        <a href="functions/item()/">item()</a>
+      </dt>
+      <dd>
+        Gets the current item within the each iteration.
+      </dd>
+      <dt>
+        <a href="functions/index()/">index()</a>
+      </dt>
+      <dd>
+        Gets the current (zero-based) index within the each iteration.
+      </dd>
+    </Block>
+  </section>
+
+  <section>
+    <h2>Sheet-scoped functions</h2>
+    <p>These functions operate on the entire sheet and can be used to get values within that context.</p>
+
+    <Block>
+      <dt>
+        <a href="functions/select()/">select()</a>
+      </dt>
+      <dd>
+        Selects an element using a selector that is scoped from the root element of the sheet.
+      </dd>
+      <dt>
+        <a href="functions/var()/">var()</a>
+      </dt>
+      <dd>
+        Gets the value of a variable within an ancestor of the selected element (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var()">CSS var()</a>).
+      </dd>
+    </Block>
+  </section>
+</Page> 

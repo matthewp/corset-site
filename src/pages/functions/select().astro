@@ -1,0 +1,46 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+---
+
+<Page title="select()">
+  <Block>
+    <p>The <strong><code>select()</code></strong> function is used to select an element using a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selector</a>. The return value is the element itself. <code>select()</code> uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">querySelector</a> and returns only a single element, not all that match.</p>
+
+    <p>The primary use case for <code>select()</code> is passing templates for the each and attach properties, but you can use it to grab any element and pass them around.</p>
+
+    <p>The selector provided can be any valid CSS selector. If the selector contains a comma character, it should be wrapped in double quotes.</p>
+  </Block>
+
+  <section>
+    <h2>With each-template</h2>
+
+    <Block>
+      <p>Using <a href="properties/each-template/">each-template</a> or the shorthand <a href="properties/each/">each</a> property, you provide a template element to use for each item in an iterable.</p>
+
+      <Code slot="code" lang="css" code={`
+#todos {
+  each-template: select(#todo-template);
+  each-items: var(--todos);
+}
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Using a complex selector</h2>
+
+    <Block>
+      <p>Corset allows most valid selector characters within a function argument, however commas as treated as an argument separator, like in most languages. This means if you have a complex selector that contains commas, you will need to wrap the selector with double quotes so that it is interpreted as a single string.</p>
+
+      <Code slot="code" lang="css" code={`
+#app {
+  /** 
+   * Grabs the first element it finds
+   * matching one of these classes.
+   */
+  --food-el: select(".vegetables, .fruits");
+}    
+`} />
+    </Block>
+  </section>
+</Page>

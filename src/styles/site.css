@@ -19,3 +19,17 @@ body {
 .corset-logo {
   fill: var(--corset-logo-color);
 }
+
+.page-footer {
+  padding-block: var(--size-7);
+  padding-inline: var(--size-6);
+}
+
+.page-footer.dark {
+  background-color: var(--gray-3);
+  color: var(--teal-9);
+}
+
+.page-footer-copyright {
+  font-size: var(--font-size-0);
+}

@@ -1,0 +1,14 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+---
+
+<Page title="text">
+  <Block>
+    <p>The <strong>text</strong> property sets the text of an element. The value can be an value that can be coerced to a text, such as a <a href="language/insertion/">JavaScript insertion</a>, a <a href="functions/var()/">var()</a>, or a <a href="language/string-literal/">string literal</a>.</p>
+    <Code slot="code" lang="css" code={`
+.name {
+  text: var(--user-name);
+}    
+`} />
+  </Block>
+</Page>
