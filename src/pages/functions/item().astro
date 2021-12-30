@@ -1,0 +1,22 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { Each, CustomProperties } from '../../components/Links.js';
+---
+
+<Page title="item()">
+  <Block>
+    <p>The <strong>item()</strong> function gets the current item within an <Each /> iteration. Outside of an each, item() will always return undefined.</p>
+  </Block>
+  <Block>
+    <p>item() can be used to get a reference to the item within an iteration to store as a custom property for later use.</p>
+    <Code slot="code" lang="css" code ={`
+.paintbrush {
+  --brush: item();
+}
+
+.paintbrush .color {
+  text: get(var(--brush), color);
+}
+`} />
+  </Block>
+</Page>

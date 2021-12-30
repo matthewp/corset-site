@@ -1,0 +1,23 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { Each, CustomProperties } from '../../components/Links.js';
+---
+
+<Page title="index()">
+  <Block>
+    <p>the <strong>index()</strong> function gets the index of the item within an <Each /> iteration. index() takes no arguments and always refers to the current item.</p>
+  </Block>
+  <Block>
+    <p>The index() can be used anywhere a value can be used, for example to set a <CustomProperties singular />.</p>
+    <Code slot="code" lang="css" code={`
+.planet {
+  --index: index();
+}
+
+.planet .delete {
+  data: index var(--index);
+  event: click var(--delete-planet);
+}
+`} />
+  </Block>
+</Page>
