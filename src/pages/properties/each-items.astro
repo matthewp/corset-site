@@ -1,0 +1,43 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Each, EachTemplate, Get, Insertion, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="each-items">
+  <Block>
+    <p>The <strong>each-items</strong> property sets the iterable (any list such as an array) of items to loop over. It must be used in conjunction with <EachTemplate />. The shorthand proprerty <Each /> is also available as an alternative.</p>
+    <p>The value can be any <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">iterable</a> item such as an array. The value can be provided via a <Insertion long />, a <Var />, or any other way an iterable can be passed.</p>
+  </Block>
+
+  <Block>
+    <p>This example passes an array of todos via an <Insertion />, a typical way that each-items is used.</p>
+    <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+const todos = [
+  { id: 1, label: 'Go to work' },
+  { id: 2, label: 'Walk the dog' },
+  { id: 3, label: 'Wash the dishes' }
+];
+
+mount(document.body, () => {
+  return sheet\`
+    .todos {
+      each-items: \${todos};
+      each-template: select(#todo-template);
+    }
+  \`;
+})
+    
+`} />
+  </Block>
+  <Block>
+    <p>Since each-items takes any array you can use <Get /> to derive an array from other values.</p>
+    <Code slot="code" lang="js" code={`
+.completed {
+  each-items: get(var(--todos), \${todos => todos.filter(todo => todo.completed)});
+}
+`} />
+  </Block>
+</Page>

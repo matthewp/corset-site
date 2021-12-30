@@ -1,0 +1,22 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { CustomProperties } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="JavaScript insertion">
+  <Block>
+    <p>{ info.project } uses <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged templates</a> for defining sheets. To insert a JavaScript value in a tagged template you use the <code data-astro-raw>${}</code> syntax.</p>
+    <p>This is the way you pass values from JavaScript into a { info.project } sheet. Any state external to the sheet is passed via an insertion.</p>
+  </Block>
+  <Block>
+    <p>An insertion can be used as a value in a property, as a value of a <CustomProperties singular />, and as an argument to a function. This example sets a callback function to a custom property and uses it as an event listener.</p>
+    
+    <Code slot="code" lang="js" code={`
+.alert {
+  --cb: \${() => alert('Hello there')};
+  event: click var(--cb);
+}
+`} />
+  </Block>
+</Page>

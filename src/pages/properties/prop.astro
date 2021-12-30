@@ -1,0 +1,25 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { AttrToggle, Identifier, Insertion, MultiBinding, String, Var } from '../../components/Links.js';
+---
+
+<Page title="prop">
+  <Block>
+    <p>The <strong>prop</strong> property allows setting an element's DOM properties. It is equivalent to using <code>element.foo = 'bar';</code>.</p>
+    <p>The <strong>first value</strong> of prop is the name of the property to set. The <strong>second value</strong> is the value to pass. For both values, any type of value is allowed, such as an <Identifier />, an <Insertion long />, a <String />, or a <Var />.</p>
+  </Block>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>This <a href="https://genericcomponents.netlify.app/generic-switch/demo/index.html">&lt;generic-switch&gt;</a> takes a boolean property <code>checked</code>. Using <strong>prop</strong> you can set that value (note that you could also use <AttrToggle /> here.</p>
+      <Code slot="code" lang="css" code={`
+generic-switch {
+  prop: checked var(--dark-mode-enabled);
+}
+`} />
+    </Block>
+  </section>
+  <Block>
+    <p>This is a <MultiBinding />; you can set multiple DOM properties within a single declaration.</p>
+  </Block>
+</Page>

@@ -1,5 +1,6 @@
 ---
 import { Page, Block,  Code } from '../../components/DocPage.js';
+import { String } from '../../components/Links.js';
 ---
 
 <Page title="select()">
@@ -8,7 +9,7 @@ import { Page, Block,  Code } from '../../components/DocPage.js';
 
     <p>The primary use case for <code>select()</code> is passing templates for the each and attach properties, but you can use it to grab any element and pass them around.</p>
 
-    <p>The selector provided can be any valid CSS selector. If the selector contains a comma character, it should be wrapped in double quotes.</p>
+    <p>The selector provided can be any valid CSS selector. If the selector contains a comma character, it should be passed as a <String />.</p>
   </Block>
 
   <section>
@@ -30,7 +31,7 @@ import { Page, Block,  Code } from '../../components/DocPage.js';
     <h2>Using a complex selector</h2>
 
     <Block>
-      <p>Corset allows most valid selector characters within a function argument, however commas as treated as an argument separator, like in most languages. This means if you have a complex selector that contains commas, you will need to wrap the selector with double quotes so that it is interpreted as a single string.</p>
+      <p>Corset allows most valid selector characters within a function argument, however commas as treated as an argument separator, like in most languages. This means if you have a complex selector that contains commas, you will need to wrap the selector with double quotes so that it is interpreted as a single <String />.</p>
 
       <Code slot="code" lang="css" code={`
 #app {

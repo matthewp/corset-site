@@ -1,0 +1,66 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { Each, Insertion, Item, Var } from '../../components/Links.js';
+---
+
+<Page title="get()">
+  <Block>
+    <p>the <strong>get()</strong> function is used to derive a value from another value. In its simplest form, get() acts like the JavaScript dot notation <code>object.property</code>.</p>
+  </Block>
+
+  <section>
+    <h2>Getting a property of an object</h2>
+    <Block>
+      <p>Using get() you can grab a property off of an object. The first argument could be a <Var /> like in this example, or an <Insertion long />, it doesn't matter.</p>
+      <Code slot="code" lang="css" code={`
+.profile {
+  --user: \${user};
+
+  text: get(var(--user), name);
+}
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Getting a property from an item within each</h2>
+
+    <Block>
+      <p>Within an <Each /> clause you can get a property by passing only the property name.</p>
+      <Code slot="code" lang="css" code={`
+.players {
+  each: var(--players) select(.player-template);
+}
+
+.player {
+  text: get(name);
+}
+`} />
+    </Block>
+
+    <Block>
+      <p>This is exactly equivalent to using the <Item /> function as the first argument to <strong>get()</strong>:</p>
+      <Code slot="code" lang="css" code={`
+.players {
+  each: var(--players) select(.player-template);
+}
+
+.player {
+  text: get(item(), name);
+}
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Deriving a value</h2>
+    <Block>
+      <p>You can also use <strong>get()</strong> to derive any value. In this example we are creating an upper-case version of the user's name. The second argument to get() in this case is a JavaScript function via an <Insertion />.</p>
+      <Code slot="code" lang="js" code={`
+.profile .title {
+  text: get(var(--name), \${name => name.toUpperCase()});
+} 
+`} />
+    </Block>
+  </section>
+</Page>

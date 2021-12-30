@@ -1,5 +1,11 @@
 ---
 import { Page, Block } from '../../components/DocPage.js';
+import {
+  Each,
+  EachKey,
+  EachItems,
+  EachTemplate
+} from '../../components/Links.js';
 ---
 
 <Page title="Properties">
@@ -49,21 +55,13 @@ import { Page, Block } from '../../components/DocPage.js';
     <p>These properties are used to define the behavior of an iterable (each).</p>
 
     <Block>
-      <dt>
-        <a href="properties/each/">each</a>
-      </dt>
+      <dt><Each /></dt>
       <dd>Shorthand property to define an each iteration.</dd>
-      <dt>
-        <a href="properties/each-items/">each-items</a>
-      </dt>
+      <dt><EachItems /></dt>
       <dd>Set the items (such an array) to iterate on.</dd>
-      <dt>
-        <a href="properties/each-temmplate/">each-template</a>
-      </dt>
+      <dt><EachTemplate /></dt>
       <dd>Sets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a> element to use for each item in the iterable.</dd>
-      <dt>
-        <a href="properties/each-key/">each-key</a>
-      </dt>
+      <dt><EachKey /></dt>
       <dd>Defines a key to use to identify items in the iterable.</dd>
     </Block>
   </section>
@@ -80,6 +78,10 @@ import { Page, Block } from '../../components/DocPage.js';
         <a href="properties/mount/">mount</a>
       </dt>
       <dd>Mount an updater function to an element that defines state and a Corset sheet to attach.</dd>
+      <dt>
+        <a href="properties/custom-properties/">custom properties</a>
+      </dt>
+      <dd>Custom properties, like in CSS, use a <code>--special</code> syntax.</dd>
     </Block>
   </section>
 </Page>

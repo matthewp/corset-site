@@ -1,0 +1,80 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Bind, CustomProperties, EachItems, EachTemplate, EachKey, Get, Index, Item, Properties, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="each">
+  <Block>
+    <p>The <strong>each</strong> shorthand property is used to loop over an iterable and apply a template for each item. It sets the values of <EachItems />, <EachTemplate /> and (optionally) <EachKey />.</p>
+  </Block>
+  <section>
+    <h2>Usage</h2>
+    <Block>
+      <p>The shorthand syntax takes 2 (or 3) values with the last being optional:</p>
+      <dt>items</dt>
+      <dd>The iterable (such as an array) to loop over. In this example it is the <Var/> <code>--todos</code>.</dd>
+      <dt>template</dt>
+      <dd>A <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt; element</a> that will be rendered for each item.</dd>
+      <dt>key</dt>
+      <dd>A property on each item that acts as a key. This property is optional, but allows { info.project } to correctly update the list in case the items change. In this case it is the <code>id</code> property.</dd>
+      <Code slot="code" lang="css" code={`
+.todos {
+  each: var(--todos) select(#todo-template) id;
+}
+
+.todo .label {
+  text: get(label);
+}
+
+.todo .delete {
+  event: click bind(var(--delete-todo), index());
+}
+`} />
+    </Block>
+    <Block>
+      <p>The above could be used to bind to the following HTML.</p>
+      <Code slot="code" lang="html" code={`
+<ul class="todos"></ul>
+
+<template id="todo-template">
+  <li class="todo">
+    <button class="delete">Delete</button>
+    <span class="label"></span>
+  </li>
+</template>
+`} />
+    </Block>
+    <section>
+      <h2>Helper functions</h2>
+      <Block>
+        <p>Within a single item of each you can bind to any <Properties />. The above example shows a few helper functions that are useful for use with <strong>each</strong>:
+        <dt><Get /></dt>
+        <dd>When passed a single argument, <Get /> uses the current item within an each clause as the object to retrieve a value. Here it is getting <code>todo.label</code> to set the text.</dd>
+        <dt><Index /></dt>
+        <dd>The <strong>index()</strong> function reviews to the zero-based index of the item within the array. Here it is being passed into a callback function so the item can be deleted from the array.</dd>
+        <dt><Bind /></dt>
+        <dd>Creates a new function with arguments bound, in this case the <code>index()</code> if the item within the array.</dd></p>
+      </Block>
+      <Block>
+        <p>Also not shown is:</p>
+        <dt><Item /></dt>
+        <dd>Specifies the item within the array.</dd>
+        <p>Here we use item() to set it to a <CustomProperties singular /> <code>--todo</code>. This can be useful to keep track of items when having each clauses nested within each other, or if you prefer explicitness.</p>
+        <Code slot="code" lang="css" code={`
+.todos {
+  each: var(--todos) select(#todo-template);
+}
+
+.todo {
+  --todo: item();
+}
+
+.todo .label {
+  text: get(var(--todo), label);
+}
+`} />
+      </Block>
+    </section>
+  </section>
+</Page>

@@ -1,0 +1,54 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { AttrToggle, MultiBinding } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="attr">
+  <Block>
+    <p><strong>attr</strong> allows setting the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Attribute">HTML attributes</a> of an element.</p>
+    <p>This is useful for dynamically setting an attribute based on a value computed in JavaScript.</p>
+    <p>attr is a <MultiBinding />, which means you can set multiple attribute values with a single declaration.</p>
+    <p>To set a boolean attribute use <AttrToggle /> instead.</p>
+  </Block>
+  
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>In this example a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">progress element</a> is being used to represent the progress of some download operation. A progress element contains a <code>value</code> attribute which needs to be set to the percentage down.</p>
+      <Code slot="code" lang="html" code={`
+<progress max="100">
+  <span class="perc">0</span>%
+</progress>
+`} />
+    </Block>
+    <Block>
+      <p>Using <strong>attr</strong> we can set the value as the progress changes.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+import { fetchWithProgress } from './fetch.js';
+
+mount(document.body, state => {
+  const download = () => {
+    fetchWithProgress(perc => {
+      state.value = perc;
+    });
+  };
+
+  const { value = 0 } = state;
+
+  return sheet\`
+    progress {
+      attr: value \${value};
+      text: \${value};
+    }
+
+    .download {
+      event: click \${download};
+    }
+  \`;
+})
+`} />
+    </Block>
+  </section>
+</Page>

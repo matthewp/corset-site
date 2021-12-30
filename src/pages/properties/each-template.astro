@@ -1,0 +1,21 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Each, EachItems, Select } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="each-template">
+  <Block>
+    <p>The <strong>each-template</strong> property is used to specify the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt; element</a> to use within an each iteration.</p>
+    <p>For each item in the template (specified with <EachItems />), the template is cloned and appended to the element that the property is attached to. each-template must be used in conjunction with <EachItems />. You can also use the shorthand <Each /> instead.</p>
+  </Block>
+  <Block>
+    <p>The value of each-template must be a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt; element</a> and is often used with <Select />.</p>
+    <Code slot="code" lang="css" code={`
+.colors {
+  each-items: var(--colors);
+  each-template: select(#color-template);
+}
+`} />
+  </Block>
+</Page>

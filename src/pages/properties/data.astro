@@ -1,0 +1,33 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { AttrToggle, Identifier, Insertion, MultiBinding, String, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="data">
+  <Block>
+    <p>The <strong>data</strong> property sets data-* properties on elements. It is equivalent to using the <code>element.dataset</code> property.</p>
+    <p>The data property is a <MultiBinding /> and can be used to set multiple data properties on the same element.</p>
+  </Block>
+
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>Data properties are often used for passing application data between components. This webside uses a data property to pass the raw code sample so that it can be copied to the clipboard.</p>
+      <Code slot="code" lang="css" code={`
+.code-snippet {
+  data: code var(--code-example);
+}
+`} />
+    </Block>
+    <Block>
+      <p>Will result in the following HTML:</p>
+      <Code slot="code" lang="html" code={`
+<pre class="code-snippet"
+  data-code=".example { color: blue; }">
+  ...
+</pre>
+`} />
+    </Block>
+  </section>
+</Page>

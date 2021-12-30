@@ -1,0 +1,35 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Get, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="string">
+  <Block>
+    <p>In { info.project }, a <strong>string literal</strong> uses double quotes, like in CSS. Unlike in CSS, strings in { info.project } are useful in many different contexts; they can be used as values of properties or as arguments to functions.</p>
+  </Block>
+
+  <section>
+    <h2>Using strings as function arguments</h2>
+    <Block>
+      <p>Like in JavaScript, you can pass strings to functions. Here we are using <Get /> to capitalize a string.</p>
+      <p>In the first example the string is being passed as the first argument to the function. In the second example the string is being assigned to a custom property, and then that property is being passed as the first argument using <Var />.</p>
+      <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+const capitalize = s => s.toUpperCase();
+
+sheet\`
+  .winter.holiday.title {
+    text: get("Christmas", \${capitalize});
+  }
+
+  .fall.holiday.title {
+    --holiday: "Halloween";
+    text: get(var(--holiday), \${capitalize});
+  }
+\`
+`} />
+    </Block>
+  </section>
+</Page>

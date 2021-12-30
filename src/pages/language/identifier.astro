@@ -1,0 +1,22 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { String } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="identifier">
+  <Block>
+    <p>Languages like JavaScript contain <strong>identifiers</strong>, which are words that identify things in the language, such as a variable.</p>
+    <p>In { info.project } an identifier represents a <String /> value without the need to quote, and can be used any place that a string is expected.</p>
+    <p>A { info.project } identifier is case-sensentive and can contain Unicode letters.</p>
+  </Block>
+
+  <Block>
+    <p>In this example, the first value of the event <code>click</code> is an identifier. It would be the same if the a <String /> value were passed instead. Using an identifier simply allows for less noise in the code.</p>
+    <Code slot="code" lang="css" code={`
+.alert {
+  event: click var(--handler);
+}    
+`} />
+  </Block>
+</Page>

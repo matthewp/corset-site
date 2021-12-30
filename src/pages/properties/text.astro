@@ -1,14 +1,69 @@
 ---
-import { Page, Block,  Code } from '../../components/DocPage.js';
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Insertion, String, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
 ---
 
 <Page title="text">
   <Block>
-    <p>The <strong>text</strong> property sets the text of an element. The value can be an value that can be coerced to a text, such as a <a href="language/insertion/">JavaScript insertion</a>, a <a href="functions/var()/">var()</a>, or a <a href="language/string-literal/">string literal</a>.</p>
+    <p>The <strong>text</strong> property sets the text of an element. The value can be an value that can be coerced to a string, such as a <Insertion long />, a <Var />, or a <String />. The text property is equivalent to using the DOM property <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">textContent</a>.</p>
     <Code slot="code" lang="css" code={`
 .name {
   text: var(--user-name);
 }    
 `} />
   </Block>
+
+  <section>
+    <h2>Setting text within a phrase or paragraph</h2>
+    <Block>
+      <p>Using a traditional JavaScript framework such as <a href="https://reactjs.com/">React</a> you can set text within a block of text, such as within a paragraph. This example shows text being set to insert the current year.</p>
+      <Code slot="code" lang="jsx" code={`
+import React from 'react';
+
+export default function() {
+  const year = new Date().getFullYear();
+
+  return <div>Copyright © { year }</div>;
+}
+`} />
+    </Block>
+
+    <Block>
+      <p>Since { info.project } operates on <em>elements</em> and not individual <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">text nodes</a> you cannot set the text in this way. Instead, use a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span">&lt;span&gt;</a> or another element to set the text within the phrase. In our case, since we are inserting a year, we should use a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time">&lt;time&gt; element</a>.</p>
+      <Code slot="code" lang="html" code={`
+<div>Copyright © <span class="year"></span></div>
+`} />
+    </Block>
+    <Block>
+      <p>Then we can use { info.project } to set the text of that specific element.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+mount(document.body, () => {
+  const year = new Date().getFullYear();
+
+  return sheet\`
+  .year {
+    text: \${year};
+  }
+\`;
+});
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Using the cascade to set text</h2>
+    <Block>
+      <p>In the <a href="https://codepen.io/matthewp/pen/abyqPGw?editors=1010">dark mode example</a> the text of a button is being set using a <String /> when a selector containing the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class">class</a> <strong>dark</strong>.</p>
+      <p>It might be intuitive to keep the title of this button as a JavaScript value and then pass it to text with an <Insertion />. This is how you would set the text using a traditional front-end framework.</p>
+      <p>With { info.project } keeping a reference isn't necessary, because the original value (the initial text) will be restored when a selector no longer matches. Notice in this example that the text is never set to <code>"light"</code>, it doesn't need to be.</p>
+      <Code slot="code" lang="css" code={`
+.dark-mode #mode {
+  text: "dark";
+}
+`} />
+    </Block>
+  </section>
 </Page>

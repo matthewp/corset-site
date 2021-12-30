@@ -1,0 +1,36 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Identifier, MultiBinding, String, Var } from '../../components/Links.js';
+---
+
+<Page title="class-toggle">
+  <Block>
+    <p>Using <strong>class-toggle</strong> allows you to add or remove a class based on a boolean condition. It is equivalent to the DOM <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle">classList.toggle()</a> method.</p>
+    <p>The <strong>first value</strong> of class-toggle is the class name to be set. The <strong>second value</strong> is the condition. If the condition is truthy the class will be added (if not already present), and if the value is falsy it will be removed.</p>
+  </Block>
+  <Block>
+    <p>In this example, the <code>admin</code> class is being set on the element only if the user is an administrator.</p>
+    <Code slot="code" lang="css" code={`
+.profile {
+  class-toggle: admin var(--is-admin);
+}
+`} />
+  </Block>
+  <Block>
+    <p>The class name can be an <Identifier />, a <String />, or any value that can represent a string, such as a <Var />.</p>
+  </Block>
+  <section>
+    <h2>Setting multiple classes</h2>
+    <Block>
+      <p><strong>class-toggle</strong> is a <MultiBinding />, which means it can set multiple classes on the same element. To do this, simply add a second pairing of class name and conditon. For readability it is recommended to split up each binding with a separate line.</p>
+
+      <Code slot="code" lang="css" code={`
+.profile {
+  class-toggle:
+    admin var(--is-admin)
+    "dark-mode" var(--dark-mode);
+}
+`} />
+    </Block>
+  </section>
+</Page>

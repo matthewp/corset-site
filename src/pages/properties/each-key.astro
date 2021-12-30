@@ -1,0 +1,22 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Each, EachTemplate, Get, Insertion, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="each-key">
+  <Block>
+    <p>the <strong>each-key</strong> property is used to specify a property on each item within an each loop.</p>
+    <p>The property is used to track which items have changed in a list if the items ever change. It is equivalent to the <a href="https://reactjs.org/docs/lists-and-keys.html">key prop in React</a> and other template-based frameworks.</p>
+  </Block>
+  <Block>
+    <p>Here the <code>id</code> property is used to keep the list up to date.</p>
+    <Code slot="code" lang="css" code={`
+.team {
+  each-items: var(--players);
+  each-template: select(#player-template);
+  each-key: id;
+}
+`} />
+  </Block>
+</Page>

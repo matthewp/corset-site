@@ -1,0 +1,31 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { AttrToggle, CustomProperties, Identifier, MultiBinding, String, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+
+<Page title="event">
+  <Block>
+    <p>The <strong>event</strong> property is used to add event listeners to an element.</p>
+    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element..</p>
+    <p>The property takes two values per binding, the <strong>first value</strong> is the event name. It can be passed via an <Identifier />, a <String />, or any other way a string can be passed such as a <Var />.</p>
+  </Block>
+
+  <Block>
+    <p>For each binding there is a single listener. This means you can assign a listener to a <CustomProperties singular /> and override that property in a selector. When a binding no longer matches, the old event listener is removed.</p>
+    <p>This example is a counter which can be in increment or decrement modes. By default it uses an increment handler (a callback function), but if in decrement mode a different handler is used instead.</p>
+    <Code slot="code" lang="css" code={`
+#app {
+  --onclick: var(--increment-counter);
+}
+
+.mode-decrement {
+  --onclick: var(--decrement-counter);
+}
+
+button {
+  event: click var(--onclick);
+}
+`} />
+  </Block>
+</Page>

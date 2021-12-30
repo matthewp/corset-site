@@ -1,0 +1,5 @@
+---
+const { singular } = Astro.props;
+const noun = singular ? 'property' : 'properties';
+---
+<a href="properties/custom-properties/">custom { noun }</a>
