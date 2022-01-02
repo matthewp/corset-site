@@ -1,0 +1,33 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { ClassToggle, MDNTemplate, Select } from '../../components/Links.js';
+---
+<Page title="attach-template">
+  <Block>
+    <p>The <strong>attach-template</strong> allows attaching a <MDNTemplate /> to an element. All of the element's children will be replaced. attach-template is used in cases where you would use an <strong>if</strong> condition in a traditional templating framework.</p>
+  </Block>
+  <Block>
+    <p>attach-template expects a <MDNTemplate /> as its value, usually using <Select />. Given the following HTML:</p>
+    <Code slot="code" lang="html" code={`
+<div id="role"></div>
+
+<template id="admin-template">
+  <h1>Administrator</h1>
+  <p>...</p>
+</template>
+`} />
+  </Block>
+  <Block>
+    <p>You would attach it to a root element. Here we are attaching it to the <code>#role</code> element only when the class <code>admin</code> exists.</p>
+    <p>You might pair this selector with another that uses <ClassToggle /> to set the relevant class conditionally.</p>
+    <Code slot="code" lang="css" code={`
+#role.admin {
+  attach-template: select(#admin-template);
+}
+
+#role {
+  class-toggle: admin var(--is-admin);
+}
+`} />
+  </Block>
+</Page>

@@ -32,7 +32,7 @@ export default function() {
     <Block>
       <p>Since { info.project } operates on <em>elements</em> and not individual <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">text nodes</a> you cannot set the text in this way. Instead, use a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span">&lt;span&gt;</a> or another element to set the text within the phrase. In our case, since we are inserting a year, we should use a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time">&lt;time&gt; element</a>.</p>
       <Code slot="code" lang="html" code={`
-<div>Copyright © <span class="year"></span></div>
+<div>Copyright © <time class="year"></time></div>
 `} />
     </Block>
     <Block>

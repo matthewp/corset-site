@@ -1,0 +1,19 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { MDNTaggedTemplate, Insertion } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+<Page title="sheet">
+  <Block>
+    <p>In { info.project } a <strong>sheet</strong> refers to a CSS-like DSL created using the default import. This import is a <MDNTaggedTemplate /> function that can take JavaScript values via <Insertion /> points.</p>
+    <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+sheet\`
+  .greeting .name {
+    text: "world";
+  }
+\`.update(document);
+`} />
+  </Block>
+</Page>
