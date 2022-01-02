@@ -5,6 +5,40 @@ import * as info from '../../info.js';
 ---
 <Page title="custom properties">
   <Block>
-    <p>{ info.project } contains <strong>custom properties</strong> that work the same was in CSS.</p>
+    <p>{ info.project } contains <strong>custom properties</strong> that work the same was in CSS. A custom property can be set by adding a property to any selector with the <code>--</code> prefix.</p>
+    <p>Custom properties are part of the cascade, meaning that they are removed when they no longer match. A property lower in the <Sheet /> takes precedent over one that is higher.</p>
+    <Code slot="code" lang="css" code={`
+.display {
+  --mode: "light";
+}
+
+.display.dark {
+  --mode: "dark";
+}
+`} />
+  </Block>
+  <Block>
+    <p>Custom properties are a big part of the programming model in { info.project }. Like with spreadsheets, custom property values can be derived from others. The <Get /> function is one way to derive a value from one another.</p>
+    <p>Here we are creating a property <code>--upper</code> that is the capitalized version of <code>--name</code>. Any time <code>--name</code> changes, the <Get /> function will rerun to derive a new value for <code>--upper</code>.</p>
+    <Code slot="code" lang="js" code={`
+.profile {
+  --name: "Wilbur";
+
+  --upper: get(var(--name),
+    \${name => name.toUpperCase()});
+}
+`} />
+  </Block>
+  <Block>
+    <p>A custom property can contain any type of value. Here a JavaScript function is being stored in the custom property <code>--cb</code> and passed as an event handler.</p>
+    <Code slot="code" lang="js" code={`
+.contact {
+  --cb: \${handleSubmit};
+}
+
+.contact form {
+  event: submit var(--cb);
+}
+`} />
   </Block>
 </Page>
