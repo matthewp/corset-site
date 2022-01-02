@@ -1,0 +1,33 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Bind, Identifier, CustomProperties, Get, MDNData, String, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+<Page title="data()">
+  <Block>
+    <p>The <strong>data()</strong> function retrieves <MDNData /> attributes from the element. It is equivalent to using the JavaScript <code>element.dataset.foo</code> API.</p>
+    <p>data() extracts the data value from the element within the selector, not from the root element that was mounted.</p>
+    <p>The <strong>first argument</strong> (and only) to data() is the name of the data attribute. This can be passed any way a value can be passed in { info.project }, such as an <Identifier />, a <String />, or a <Var />.</p>
+  </Block>
+  <Block>
+    <p>Using data() is a convenient way to extract values passed via HTML when server rendered.</p>
+    <Code slot="code" lang="html" code={`
+<div class="ingredient" data-category="spice">
+  <span class="category">...</span>
+</div>
+`} />
+  </Block>
+  <Block>
+    <p>Once extracted you can use the value like any other in { info.project }. You can store it as a <CustomProperties singular />, or derive another value from it (in this case using <Get />). You can also pass the value back to JavaScript in an event by using <Bind />.</p>
+    <Code slot="code" lang="js" code={`
+.ingredient {
+  --cat: data(category);
+  --upper: get(var(--cat), \${cat => cat.toUpperCase()});
+}
+
+.ingredient .category {
+  text: var(--upper);
+}
+`} />
+  </Block>
+</Page>

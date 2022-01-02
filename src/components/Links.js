@@ -30,5 +30,6 @@ export { default as Var } from './Links/Var.astro';
 export { default as Sheet } from './Links/Sheet.astro';
 
 // MDN
-export { default as MDNTemplate } from './Links/MDNTemplate.astro';
-export { default as MDNTaggedTemplate } from './Links/MDNTaggedTemplate.astro';
+export { default as MDNData } from './Links/Data.astro';
+export { default as MDNTemplate } from './Links/MDN/Template.astro';
+export { default as MDNTaggedTemplate } from './Links/MDN/TaggedTemplate.astro';

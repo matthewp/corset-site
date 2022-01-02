@@ -1,0 +1,22 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { CustomProperties, Insertion, Sheet, Var } from '../../components/Links.js';
+---
+<Page title="bind()">
+  <Block>
+    <p>The <strong>bind()</strong> function is used to bind an existing JavaScript function with arguments. It works like the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind">JavaScript bind</a> function, except that it does not set a <code>this</code> value.</p>
+    <p>The <strong>first argument</strong> to bind is a JavaScript function. This can be passed via a <Insertion long />, a <Var />, or any other way a value can be passed.</p>
+    <p>Any <strong>remaining arguments</strong> are values that will be passed to the bound function. You can pass as many arguments as you need.</p>
+  </Block>
+  <Block>
+    <p>bind() is used to pass values that exist within a <Sheet />, such as <CustomProperties />, into a function. Here a callback is being created with a user object being passed as the first argument. Like with JavaScript bind, arguments after the bound ones will still be passed. This callback will receive an <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">event</a> as the last argument, if used as an event handler.</p>
+    <p>The return value of bind is a function, which means it can be set as a custom property.</p>
+    <Code slot="code" lang="css" code={`
+.contact form {
+  --cb: bind(var(--handler), var(--user));
+
+  event: click var(--cb);
+}
+`} />
+  </Block>
+</Page>
