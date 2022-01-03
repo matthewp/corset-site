@@ -4,7 +4,6 @@
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(var(--min-column-width), var(--max-column-width)));
-  background: var(--grape-0);
 }
 
 .hero {

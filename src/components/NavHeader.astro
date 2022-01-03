@@ -1,11 +1,10 @@
 ---
 import GitHubIcon from './GitHub.astro';
 import Logo from './LinkedLogo.astro';
-import * as info from '../info.js';
 ---
 <style global>
 .site-navigation {
-  padding-block: var(--size-2);
+  padding-block: var(--size-3);
   padding-inline: var(--size-6);
   display: flex;
   justify-content: space-between;
@@ -15,7 +14,7 @@ import * as info from '../info.js';
   font-size: var(--font-size-4);
 }
 
-.site-navigation.dark .page-title h1 a {
+.site-navigation .page-title h1 a {
   color: var(--blue-1);
   text-decoration: none;
 }
@@ -27,10 +26,10 @@ import * as info from '../info.js';
 
 .github-icon {
   stroke: unset;
-  fill: var(--grape-0);
+  fill: var(--gray-8);
 }
 </style>
-<nav class="site-navigation dark">
+<nav class="site-navigation">
   <header class="page-title">
     <h1><Logo /></h1>
   </header>
