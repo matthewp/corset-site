@@ -9,7 +9,9 @@
 
 .hero {
   padding: var(--size-8);
+  padding-top: var(--size-11);
   display: grid;
+  justify-content: center;
   gap: var(--size-5);
 }
 
@@ -18,6 +20,7 @@
   grid-template-columns: 1fr;
   color: var(--gray-9);
   line-height: var(--font-lineheight-0);
+  text-align: center;
 }
 
 .hero-message > div:last-child {
@@ -33,6 +36,7 @@
 .button-list {
   display: flex;
   gap: var(--size-3);
+  justify-content: center;
 }
 
 button, .button {
@@ -57,16 +61,4 @@ button.primary, .button.primary {
 
 button.primary:hover, .button.primary:hover {
   background: var(--indigo-7);
-}
-
-.promo-art {
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.promo-art .corset-logo {
-  width: var(--size-12-point-5);
-
 }

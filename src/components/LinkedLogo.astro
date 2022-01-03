@@ -1,0 +1,21 @@
+---
+import Logo from './Logo.astro';
+import * as info from '../info.js';
+---
+<style global>
+  .linked-logo {
+    display: flex;
+    align-items: center;
+    font-weight: var(--font-weight-7);
+  }
+
+  .linked-logo > svg {
+    display: inline;
+    width: var(--size-4);
+    margin-right: var(--size-fluid-1);
+  }
+</style>
+<a class="linked-logo" href="/">
+  <Logo />
+  <span>{ info.project }</span>
+</a>
