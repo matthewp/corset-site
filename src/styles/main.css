@@ -8,7 +8,7 @@
 
 .hero {
   padding: var(--size-8);
-  padding-top: var(--size-11);
+  padding-block: var(--size-11);
   display: grid;
   justify-content: center;
   gap: var(--size-5);
@@ -60,4 +60,37 @@ button.primary, .button.primary {
 
 button.primary:hover, .button.primary:hover {
   background: var(--indigo-7);
+}
+
+.example {
+  display: grid;
+  justify-items: center;
+  padding-block: var(--size-fluid-6);
+  gap: var(--size-fluid-4);
+}
+
+.example header {
+  display: grid;
+  justify-items: center;
+}
+
+.explanation {
+  font-size: var(--font-size-3);
+}
+
+article {
+  padding: var(--size-4) var(--size-8);
+}
+
+.block-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--size-fluid-3);
+}
+
+.block-wrap > * {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: var(--size-content-2);
 }
