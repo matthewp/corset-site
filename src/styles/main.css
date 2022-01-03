@@ -1,13 +1,14 @@
 .hero-header {
+  --max-column-width: 1fr;
+  --min-column-width: 385px;
   display: grid;
   align-items: center;
-  grid-template-columns: 4fr 3fr;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-column-width), var(--max-column-width)));
   background: var(--grape-0);
 }
 
 .hero {
-  padding: var(--size-10);
-  padding-right: 0;
+  padding: var(--size-8);
   display: grid;
   gap: var(--size-5);
 }
