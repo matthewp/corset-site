@@ -6,16 +6,6 @@ article {
   padding: var(--size-4) var(--size-8);
 }
 
-.doc-block {
-  margin-block: var(--size-fluid-2);
-}
-
-.doc-block-content {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  column-gap: var(--size-3);
-}
-
 .doc-title,
 .doc-block > h2, .doc-block > h3, .doc-block > h4, .doc-block > h5 {
   margin-block: var(--size-fluid-1);
