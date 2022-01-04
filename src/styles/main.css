@@ -39,6 +39,22 @@
   justify-content: center;
 }
 
+.button-list {
+  flex-wrap: wrap;
+}
+
+@media(max-width: 520px) {
+  .button-list > * {
+    flex-grow: 1;
+    flex-basis: 140px;
+  }
+}
+
+.button-list > * {
+  flex-shrink: 1;
+  text-align: center;
+}
+
 button, .button {
   background: white;
   color: var(--indigo-8);
