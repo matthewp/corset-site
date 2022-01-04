@@ -1,6 +1,23 @@
 ---
 import * as info from '../info.js';
 ---
+<style global>
+.page-footer {
+  padding-block: var(--size-7);
+  padding-inline: var(--size-6);
+  display: grid;
+  justify-content: center;
+}
+
+.page-footer.dark {
+  background-color: var(--gray-7);
+  color: var(--teal-2);
+}
+
+.page-footer-copyright {
+  font-size: var(--font-size-0);
+}
+</style>
 <footer class="page-footer dark">
   <div class="page-footer-copyright">Copyright © { info.year } Matthew Phillips</div>
 </footer>
