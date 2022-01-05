@@ -1,0 +1,36 @@
+---
+const { title } = Astro.props;
+const pathname = Astro.request.url.pathname;
+const base = pathname.slice(1);
+const parts = base.split('/');
+const section = parts[0];
+const titleize = s => s[0].toUpperCase() + s.slice(1);
+
+// Only foldered pages should have a breadcrumb.
+const shouldHaveBreadcrumbs = parts.length > 2;
+---
+<style global>
+  .breadcrumb ol {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: var(--size-2);
+    color: var(--blue-9);
+    content: var(--breadcrumb-divider, "/");
+}
+</style>
+
+{ shouldHaveBreadcrumbs ? (
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li class="breadcrumb-item"><a href="api/">API</a></li>
+      <li class="breadcrumb-item"><a href={`${section}/`}>{ titleize(section) }</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href={ base }>{ title }</a></li>
+    </ol>
+  </nav>
+) : <Fragment></Fragment> }
