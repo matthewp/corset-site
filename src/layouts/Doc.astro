@@ -14,9 +14,9 @@ const base = npath.relative(url.pathname, '/') || '.';
 
 <html lang="en">
 <head>
+  <title>{ title } | { info.project }</title>
+  <base href={base}>
 	<CommonHead />
-	<title>{ title } | { info.project }</title>
-	<base href={base}>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
 	<style global>
     @import "../styles/doc.css";

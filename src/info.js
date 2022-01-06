@@ -1,3 +1,6 @@
+import { createRequire } from 'module';
+const _require = createRequire(import.meta.url);
+
 export const project = 'Corset';
 export const year = new Date().getFullYear();
 
@@ -8,3 +11,7 @@ export const version = '0.3.1';
 export const cdnURL = CDNURL(version);
 export const cdnWasmURL = CDNWASMURL(version);
 export const npmPkg = 'corset';
+
+// Generator
+const astroPkg = _require('astro/package.json');
+export const generator = `Astro ${astroPkg.version}`;
