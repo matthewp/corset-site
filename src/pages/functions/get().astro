@@ -58,6 +58,7 @@ import { Each, Insertion, Item, Var } from '../../components/Links.js';
       <p>You can also use <strong>get()</strong> to derive any value. In this example we are creating an upper-case version of the user's name. The second argument to get() in this case is a JavaScript function via an <Insertion />.</p>
       <Code slot="code" lang="js" code={`
 .profile .title {
+  --name: "Wilbur";
   text: get(var(--name), \${name => name.toUpperCase()});
 } 
 `} />
