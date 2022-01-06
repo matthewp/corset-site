@@ -1,66 +1,66 @@
 ---
 import { Page, Block,  Code } from '../../components/DocPage.js';
-import { Each, Insertion, Item, Var } from '../../components/Links.js';
+import { Each, Insertion, Identifier, Item, String, Var } from '../../components/Links.js';
 ---
 
 <Page title="get()">
   <Block>
-    <p>the <strong>get()</strong> function is used to derive a value from another value. In its simplest form, get() acts like the JavaScript dot notation <code>object.property</code>.</p>
+    <p>the <strong>get()</strong> function is used to derive a value from another value. The get() function has 3 signatures, with the latter two being syntactic sugar.</p>
   </Block>
 
   <section>
-    <h2>Getting a property of an object</h2>
+    <h2>get(value, callback)</h2>
     <Block>
-      <p>Using get() you can grab a property off of an object. The first argument could be a <Var /> like in this example, or an <Insertion long />, it doesn't matter.</p>
-      <Code slot="code" lang="css" code={`
+      <p>This is the lowest form of get(), using a callback function to derive a value.</p>
+      <p>The <strong>first argument</strong> is a value of any type. The <strong>second argument</strong> is a function that receives the first argument and returns a derived value.</p>
+      <Code slot="code" lang="js" code={`
 .profile {
-  --user: \${user};
+  --user: \${{ name: 'Wilbur' }};
 
-  text: get(var(--user), name);
-}
-`} />
-    </Block>
-  </section>
-
-  <section>
-    <h2>Getting a property from an item within each</h2>
-
-    <Block>
-      <p>Within an <Each /> clause you can get a property by passing only the property name.</p>
-      <Code slot="code" lang="css" code={`
-.players {
-  each: var(--players) select(.player-template);
-}
-
-.player {
-  text: get(name);
+  text: get(var(--user), \${user => user.name});
 }
 `} />
     </Block>
 
+    <h3>Deriving a non-object value</h3>
     <Block>
-      <p>This is exactly equivalent to using the <Item /> function as the first argument to <strong>get()</strong>:</p>
-      <Code slot="code" lang="css" code={`
-.players {
-  each: var(--players) select(.player-template);
-}
-
-.player {
-  text: get(item(), name);
-}
-`} />
-    </Block>
-  </section>
-
-  <section>
-    <h2>Deriving a value</h2>
-    <Block>
-      <p>You can also use <strong>get()</strong> to derive any value. In this example we are creating an upper-case version of the user's name. The second argument to get() in this case is a JavaScript function via an <Insertion />.</p>
+      <p>You can use <strong>get()</strong> to derive from any value, not just objects. In this example we are creating an uppercase version of the user's name. The second argument receives the <String /> name, and returns another string.</p>
       <Code slot="code" lang="js" code={`
 .profile .title {
   --name: "Wilbur";
   text: get(var(--name), \${name => name.toUpperCase()});
 } 
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>get(value, prop)</h2>
+    <Block>
+      <p>The second signature of get() is like the first, but instead of taking a callback function, it takes a property.</p>
+      <p>The <strong>first argument</strong> is a value of any type. The <strong>second argument</strong> is the property name to get. This can be provided as an <Identifier />, a <String />, a <Var />, or any other way that a string value can be passed.</p>
+      <Code slot="code" lang="js" code={`
+.profile {
+  --user: \${{ name: 'Wilbur' }};
+
+  text: get(var(--user), name);
+} 
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>get(prop)</h2>
+    <Block>
+      <p>The third signature of get() takes on a property name, as the <strong>first argument</strong>. It implicitly users <Item /> as the first argument and is used only within an <Each /> scope.</p>
+           <Code slot="code" lang="js" code={`
+.users {
+  each: var(--users) select(.user-template);
+}
+
+.user .profile {
+  text: get(name);
+}
 `} />
     </Block>
   </section>
