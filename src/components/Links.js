@@ -25,6 +25,7 @@ export { default as Index } from './Links/Index.astro';
 export { default as Item } from './Links/Item.astro';
 export { default as Select } from './Links/Select.astro';
 export { default as Var } from './Links/Var.astro';
+export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 
 // Types
 export { default as Sheet } from './Links/Sheet.astro';
