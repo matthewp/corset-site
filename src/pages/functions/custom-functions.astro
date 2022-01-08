@@ -1,0 +1,23 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { CustomProperties } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+<Page title="custom functions">
+  <Block>
+    <p>A <strong>custom function</strong> is a function used within { info.project } that is defined by JavaScript.</p>
+    <p>A custom function is defined the same as a <CustomProperties />, but can be called like a function.</p>
+  </Block>
+  <Block>
+    <p>A custom function can be used anywhere that builtin functions can be used. Like with variables, custom functions can be changed in a given selector, which will result in the function call to change as well.</p>
+    <Code slot="code" lang="js" code={`
+#app {
+  --concat: \${(...args) => args.join('')};
+}
+
+.profile .name {
+  text: --concat(var(--first), " ", var(--last));
+}
+`} />
+  </Block>
+</Page>
