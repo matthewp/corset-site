@@ -1,0 +1,72 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { API, Concepts, CustomProperties, Insertion, NodeJS, React, Var, Vue } from '../../components/Links.js';
+---
+
+<Page title="Concepts">
+  <Block>
+    <p>This page gives an overview of the major concepts of <strong>{ info.project }</strong>, and what the project is all about.</p>
+  </Block>
+
+  <section>
+    <h2>Progressive enhancement</h2>
+
+    <Block>
+      <p><strong>{ info.project }</strong> is a reactive library for building interactive user interfaces on the web. This puts it into the same category as popular libraries like <React /> and <Vue />.</p>
+      <p>What sets { info.project } apart from other libraries is that it is <em>not template based</em>. Instead of having a template of what your HTML should look like, { info.project } is used to enhance HTML you already created. This is called <strong>progressive enhancement</strong>. Other libraries allow progressive enhancement as well, but they only enhance the HTML that was created using their library.</p>
+      <p>This means that when using libraries like <React /> and <Vue /> you have to use them both on your server and in the browser. This means you have to use <NodeJS /> as your web server.</p>
+      <Code slot="code" lang="html" code={`
+<form class="login-form">
+  <label>
+    Email
+    <input
+      name="email"
+      type="text"
+      placeholder="Enter your email address">
+  </label>
+  <input type="submit" value="Continue">
+</form>
+`} />
+    </Block>
+
+    <Block>
+      <p>Because { info.project } is powered by a CSS-like <abbr title="domain-specific language">DSL</abbr>, it is able to connect to HTML no matter how it is created. { info.project } works equally well in <NodeJS /> or <a href="https://www.php.net/">PHP</a> or <a href="https://rubyonrails.org/">Ruby on Rails</a> powered backends. It works well inside of code demo tools like <a href="https://codepen.io/collection/JGKPZg">CodePen</a>. You can even use <React /> as your backend templating language and then { info.project } to make it reactive on the frontend!</p>
+      <p>We believe strongly that decoupling the backend from the frontend makes both better. The backend can be focused on the unique requirements of the application; the frontend can be <strong>smaller</strong> and leaner due to shedding the concerns of generating HTML (much of which is never interactive).</p>
+      <Code slot="code" lang="css" code={`
+.login-form {
+  event: submit var(--handler);
+}
+
+.login-form input[name=email] {
+  event: input var(--validate-email);
+}
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Reactive</h2>
+    <Block>
+      <p>{ info.project } is a declarative library thanks to the CSS-like DSL. { info.project } supports many, but not all, features of CSS. One that it supports is <CustomProperties />. Using <Var /> with custom properties allows complete reactive interfaces.</p>
+      <p><Var plural /> in { info.project } give you "spreadsheet power". In a spreadsheet you have values and computed values. Whenever a value changes, its computed dependencies recalculate. In { info.project }, the same is true of vars().</p>
+      <p>{ info.project } allows recomputing a sheet through <Insertion long plural /> in a top-level mount. A <strong>state</strong> object is passed into a mount and when that state object's properties change, the mount function is rerun.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+mount(document, state => {
+  const onsubmit = async (user, ev) => {
+    ev.preventDefault();
+    await saveToDB();
+    state.user = user;
+  }
+
+  .login-form {
+    --user: "Wilbur";
+    --submit: bind(\${onsubmit}, var(--user));
+    event: submit var(--submit);
+  }
+});
+`} />
+    </Block>
+  </section>
+</Page>

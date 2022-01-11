@@ -3,6 +3,7 @@ import CommonHead from '../components/CommonHead.astro';
 import NavHeader from '../components/NavHeader.astro';
 import Code from '../components/Code.astro';
 import Footer from '../components/Footer.astro';
+import { Installation } from '../components/Links.js';
 import * as info from '../info.js';
 ---
 
@@ -26,7 +27,7 @@ import * as info from '../info.js';
 			</h1>
 			<p class="under-hero">Reactive UI without the complexity of <abbr title="Single-page application">SPA</abbr> frameworks. Use any backend you like; bind to the HTML you already produced.</p>
 			<div class="button-list">
-				<a href="installation/" class="primary button">Get started</a>
+        <Installation class="primary button" title="Get started" />
 				<a href="api/" class="button">Documentation</a>
 			</div>
 		</section>

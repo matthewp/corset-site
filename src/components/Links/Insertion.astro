@@ -1,4 +1,5 @@
 ---
-const { long } = Astro.props;
+const { long, plural } = Astro.props;
+const s = plural && 's';
 ---
-<a href="language/insertion/">{ long ? <span>JavaScript insertion</span> : <span>insertion</span></a>
+<a href="language/insertion/">{ long ? <span>JavaScript insertion{s}</span> : <span>insertion{s}</span></a>

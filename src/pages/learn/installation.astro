@@ -1,5 +1,6 @@
 ---
-import { Page, Block,  Code, info } from '../components/DocPage.js';
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { API, Concepts } from '../../components/Links.js';
 ---
 
 <Page title="Installation">
@@ -58,5 +59,19 @@ mount(document.body, state => {
 		</Block>
 	</section>
 
+	<section>
+		<h2>Further reading</h2>
+		<Block>
+			<p>Now that you have { info.project } installed, read more about using { info.project }.</p>
+			<dt>
+				<Concepts titleCase />
+			</dt>
+			<dd>Learn about the fundamental concepts of { info.project } and what makes it different.</dd>
+			<dt>
+				<API />
+			</dt>
+			<dd>Dive straight into the deep end and learn about the API, both on the JavaScript side and the DSL.</dd>
+		</Block>
+	</section>
 
 </Page>

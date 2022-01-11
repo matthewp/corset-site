@@ -1,0 +1,5 @@
+---
+const { title, titleCase, class: className } = Astro.props;
+const i = !title && titleCase ? 'I' : 'i';
+---
+<a href="learn/installation/" class={className}>{ title || i + 'nstallation' }</a>

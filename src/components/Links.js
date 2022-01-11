@@ -1,3 +1,5 @@
+export { default as API } from './Links/API.astro';
+
 // Language
 export { default as Identifier } from './Links/Identifier.astro';
 export { default as Insertion } from './Links/Insertion.astro';
@@ -30,7 +32,16 @@ export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 // Types
 export { default as Sheet } from './Links/Sheet.astro';
 
+// Learn
+export { default as Concepts } from './Links/Concepts.astro';
+export { default as Installation } from './Links/Installation.astro';
+
 // MDN
 export { default as MDNData } from './Links/Data.astro';
 export { default as MDNTemplate } from './Links/MDN/Template.astro';
 export { default as MDNTaggedTemplate } from './Links/MDN/TaggedTemplate.astro';
+
+// Frameworks
+export { default as NodeJS } from './Links/NodeJS.astro';
+export { default as React } from './Links/React.astro';
+export { default as Vue } from './Links/Vue.astro';
