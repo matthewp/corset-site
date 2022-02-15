@@ -1,11 +1,11 @@
 ---
 import { Page, Block,  Code } from '../../components/DocPage.js';
-import { Each, Insertion, Identifier, Item, String, Var } from '../../components/Links.js';
+import { Each, Identifier, Item, String, Var } from '../../components/Links.js';
 ---
 
 <Page title="get()">
   <Block>
-    <p>the <strong>get()</strong> function is used to derive a value from another value. The get() function has 3 signatures, with the latter two being syntactic sugar.</p>
+    <p>the <strong>get()</strong> function is used to derive a value from another value. The get() function has 2 signatures, with the latter being syntactic sugar.</p>
   </Block>
 
   <section>
@@ -45,22 +45,6 @@ import { Each, Insertion, Identifier, Item, String, Var } from '../../components
 
   text: get(var(--user), name);
 } 
-`} />
-    </Block>
-  </section>
-
-  <section>
-    <h2>get(prop)</h2>
-    <Block>
-      <p>The third signature of get() takes on a property name, as the <strong>first argument</strong>. It implicitly users <Item /> as the first argument and is used only within an <Each /> scope.</p>
-           <Code slot="code" lang="js" code={`
-.users {
-  each: var(--users) select(.user-template);
-}
-
-.user .profile {
-  text: get(name);
-}
 `} />
     </Block>
   </section>

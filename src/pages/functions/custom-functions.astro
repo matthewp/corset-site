@@ -6,18 +6,54 @@ import * as info from '../../info.js';
 <Page title="custom functions">
   <Block>
     <p>A <strong>custom function</strong> is a function used within { info.project } that is defined by JavaScript.</p>
-    <p>A custom function is defined the same as a <CustomProperties />, but can be called like a function.</p>
+    <p>Custom functions can be defined as <CustomProperties plural />, or through a JavaScript API.</p>
   </Block>
   <Block>
-    <p>A custom function can be used anywhere that builtin functions can be used. Like with variables, custom functions can be changed in a given selector, which will result in the function call to change as well.</p>
-    <Code slot="code" lang="js" code={`
-#app {
-  --concat: \${(...args) => args.join('')};
-}
+    <p>A custom function can be used anywhere that builtin functions can be used.</p>
+  </Block> 
+  <section>
+    <h2>Defined as custom properties</h2>
+    <Block>
+      <p>When defined as a <CustomProperties singular />, a custom function is scoped to the sheet that defines it. The function <strong>cannot</strong> be used in another sheet, unless defined there as well.</p>
+      <p>Like with variables, custom functions can be changed in a given selector, which will result in the function call to change as well.</p>
+      <Code slot="code" lang="js" code={`
+  #app {
+    --concat: \${(...args) => args.join('')};
+  }
 
-.profile .name {
-  text: --concat(var(--first), " ", var(--last));
-}
+  .profile .name {
+    text: --concat(var(--first), " ", var(--last));
+  }
+  `} />
+    </Block>
+  </section>
+  <section>
+    <h2>registerCustomFunction</h2>
+    <Block>
+      <p>A separate JavaScript API exists for defining functions outside of the sheet. This provides lower-level access to both the <strong>rootElement</strong> (the element that the sheet is mounted on) and the <strong>element</strong> (where the function is bound).</p>
+      <p>Additionally, defining custom functions with <strong>registerCustionFunction</strong> allows defining <strong>inputProperties</strong>, which are received via a map.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount, registerCustomFunction } from '${info.cdnURL}';
+
+registerCustomFunction('--add-two', class {
+  static inputProperties = ['--start'];
+  call([a, b], ctx, props) {
+    return a + b + props.get('--start');
+  }
+});
+
+mount(document, () => {
+  return sheet\`
+    #app {
+      --start: \${3};
+    }
+    .result {
+      text: --add-two(\${1}, \${2});
+    }
+  \`;
+});
+
 `} />
-  </Block>
+    </Block>
+  </section>
 </Page>

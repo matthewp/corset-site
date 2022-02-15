@@ -6,10 +6,12 @@ export { default as Insertion } from './Links/Insertion.astro';
 export { default as MultiBinding } from './Links/MultiBinding.astro';
 export { default as String } from './Links/String.astro';
 export { default as Properties } from './Links/Properties.astro';
+export { default as KeyedProperty } from './Links/KeyedProperty.astro';
 
 // Properties
 export { default as Attr } from './Links/Attr.astro';
 export { default as AttrToggle } from './Links/AttrToggle.astro';
+export { default as AttrValue } from './Links/AttrValue.astro';
 export { default as ClassToggle } from './Links/ClassToggle.astro';
 export { default as CustomProperties } from './Links/CustomProperties.astro';
 export { default as Data } from './Links/Data.astro';

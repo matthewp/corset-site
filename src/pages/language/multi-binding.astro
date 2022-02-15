@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Attr, AttrToggle, ClassToggle, Event, Prop, Data } from '../../components/Links.js';
+import { Attr, ClassToggle, Event, Prop, Data, KeyedProperty } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 
@@ -9,17 +9,45 @@ import * as info from '../../info.js';
     <p>In { info.project }, a <strong>multi-binding property</strong> is a property that can set multiple bindings within a single declaration. In CSS a property usually corresponds to a single thing; an element can only have 1 color. However the use cases in { info.project } need setting multiple things; for example you might want to set multiple <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class">classes</a> with <ClassToggle />.</p>
   </Block>
   <Block>
-    <p>The <Attr /> property is an example of a multi-binding property. You can set multiple attribute values in a single declaration. Here we are setting the <code>type</code>, <code>value</code>, and <code>placeholder</code> attribute of an input element.</p>
+    <p>The <Attr /> property is an example of a multi-binding property. You can set multiple attribute values in a single declaration. Here we are setting the <code>type</code>, <code>value</code>, and <code>placeholder</code> attribute of an input element. Each binding is separated with a comma.</p>
     <p>Seperating different bindings by putting them on separate lines improves readability on these types of bindings.</p>
     <Code slot="code" lang="css" code={`
 input {
   attr:
-    type "text"
-    placeholder "Your username"
+    type "text",
+    placeholder "Your username",
     value: var(--username);
 }
 `} />
   </Block>
+  <section>
+    <h2>Keyed properties</h2>
+    <Block>
+      <p>All of the multi-binding properties are also <KeyedProperty plural />. This means they instead of listing all of the values in a single declaration, you can separate them into multiple decorations per key.</p>
+      <Code slot="code" lang="css" code={`
+input {
+  attr[type]: "text";
+  attr[placeholder]: "Your username";
+  attr[value]: var(--username);
+}`} />
+    </Block>
+    <Block>
+      <p>When you use the comma-separated form it will override existing bindings.</p>
+      <p>In this example the <code>id</code> attribute will be <em>removed</em> because the multi-binding form does not include a value for <code>id</code>. This aligns with how similar properties work in CSS.</p>
+      <Code slot="code" lang="css" code={`
+input {
+  attr[id]: "name";
+}
+
+input {
+  attr:
+    type "text",
+    placeholder "Your username",
+    value var(--username);
+}
+`} />
+    </Block>
+  </section>
   <section>
     <h2>Reference</h2>
     <Block>
@@ -27,8 +55,6 @@ input {
 
       <dt><Attr /></dt>
       <dd>Sets attributes on an element.</dd>
-      <dt><AttrToggle /></dt>
-      <dd>Sets boolean attributes on an element.</dd>
       <dt><ClassToggle /></dt>
       <dd>Sets the classes on an element.</dd>
       <dt><Event /></dt>

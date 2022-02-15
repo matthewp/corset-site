@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { AttrToggle, Identifier, Insertion, MultiBinding, String, Var } from '../../components/Links.js';
+import { AttrToggle, Identifier, Insertion, KeyedProperty, MultiBinding, String, Var } from '../../components/Links.js';
 ---
 
 <Page title="prop">
@@ -21,5 +21,12 @@ generic-switch {
   </section>
   <Block>
     <p>This is a <MultiBinding />; you can set multiple DOM properties within a single declaration.</p>
+    <p>prop is also a <KeyedProperty />, so you can use keys to set individual DOM properties with separate declarations.</p>
+    <Code slot="code" lang="css" code={`
+generic-switch {
+  prop[checked]: var(--dark-mode-enabled);
+  prop[another]: "value";
+}
+`} />
   </Block>
 </Page>
