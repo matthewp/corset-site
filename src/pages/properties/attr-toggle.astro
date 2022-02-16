@@ -1,21 +1,28 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Attr, MultiBinding } from '../../components/Links.js';
-import * as info from '../../info.js';
+import { Attr, AttrValue, KeyedProperty } from '../../components/Links.js';
 ---
 
 <Page title="attr-toggle">
   <Block>
     <p>The <strong>attr-toggle</strong> property is used to toggle a boolean attribute. To set an attribute that contains a value, use the <Attr /> property instead.</p>
-    <p>attr-toggle is a <MultiBinding />, which means you can toggle multiple boolean attributes on the same element.</p>
-    <p>The <strong>first value</strong> is the attribute name to be toggled and the <strong>second value</strong> is the condition on which the attribute should be added or removed.</p>
+    <p>attr-toggle is a <KeyedProperty />. The <strong>value</strong> is the condition on which the attribute should be added or removed.</p>
+    <p>attr-toggle is a longhand property, the shorthand is <Attr />.</p>
   </Block>
   <Block>
     <p>A boolean attribute is one where the attribute either exists, with an empty string value, or does not exist, on an element. An example is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled</a> attribute commonly used on form elements.</p>
     <p>In this example, the disabled attribute is being toggled on a button when a form is in a state where it cannot be submitted.</p>
     <Code slot="code" lang="css" code={`
 form .submit {
-  attr-toggle: disabled var(--invalid);
+  attr-toggle[disabled]: var(--invalid);
+}
+`} />
+  </Block>
+  <Block>
+    <p>This is exactly equivalent to using the <Attr /> shorthand with an empty string at the <AttrValue />.</p>
+    <Code slot="code" lang="css" code={`
+form .submit {
+  attr[disabled]: "" var(--invalid);
 }
 `} />
   </Block>

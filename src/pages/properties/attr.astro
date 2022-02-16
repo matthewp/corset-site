@@ -1,15 +1,15 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { AttrToggle, MultiBinding } from '../../components/Links.js';
+import { AttrValue, AttrToggle, MultiBinding, KeyedProperty } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 
 <Page title="attr">
   <Block>
-    <p><strong>attr</strong> allows setting the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Attribute">HTML attributes</a> of an element.</p>
-    <p>This is useful for dynamically setting an attribute based on a value computed in JavaScript.</p>
+    <p><strong>attr</strong> allows setting the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Attribute">HTML attributes</a> of an element. It is shorthand for the longhand properties <AttrValue /> and <AttrToggle />.</p>
+    <p>attr is useful for dynamically setting an attribute based on a value computed in JavaScript.</p>
     <p>attr is a <MultiBinding />, which means you can set multiple attribute values with a single declaration.</p>
-    <p>To set a boolean attribute use <AttrToggle /> instead.</p>
+    <p>To set a boolean attribute you can use also <AttrToggle /> by itself.</p>
   </Block>
   
   <section>
@@ -24,11 +24,12 @@ import * as info from '../../info.js';
     </Block>
     <Block>
       <p>Using <strong>attr</strong> we can set the value as the progress changes.</p>
+      <p>This example uses attr as a <KeyedProperty />, but it can also be used without the key instead.</p>
       <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 import { fetchWithProgress } from './fetch.js';
 
-mount(document.body, state => {
+mount(document, state => {
   const download = () => {
     fetchWithProgress(perc => {
       state.value = perc;
@@ -39,12 +40,12 @@ mount(document.body, state => {
 
   return sheet\`
     progress {
-      attr: value \${value};
+      attr[value]: \${value};
       text: \${value};
     }
 
     .download {
-      event: click \${download};
+      event[click]: \${download};
     }
   \`;
 })

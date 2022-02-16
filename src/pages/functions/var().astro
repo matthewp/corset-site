@@ -31,7 +31,7 @@ import { Page, Block,  Code } from '../../components/DocPage.js';
 form {
   --handler: \${handleForm};
 
-  event: submit var(--handler);
+  event[submit]: var(--handler);
 }      
 `}></Code>
     </Block>

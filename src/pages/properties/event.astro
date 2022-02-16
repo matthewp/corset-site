@@ -7,7 +7,7 @@ import * as info from '../../info.js';
 <Page title="event">
   <Block>
     <p>The <strong>event</strong> property is used to add event listeners to an element.</p>
-    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element..</p>
+    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element.</p>
     <p>The property takes two values per binding, the <strong>first value</strong> is the event name. It can be passed via an <Identifier />, a <String />, or any other way a string can be passed such as a <Var />.</p>
   </Block>
 
@@ -24,7 +24,7 @@ import * as info from '../../info.js';
 }
 
 button {
-  event: click var(--onclick);
+  event[click]: var(--onclick);
 }
 `} />
   </Block>
