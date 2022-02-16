@@ -1,6 +1,8 @@
 ---
 import { Page, Block } from '../../components/DocPage.js';
 import {
+  AttrValue,
+  AttrToggle,
   Each,
   EachKey,
   EachItems,
@@ -30,10 +32,10 @@ import {
       <dt>
         <a href="properties/attr/">attr</a>
       </dt>
-      <dd>Set values of attributes on an element.</dd>
-      <dt>
-        <a href="properties/attr-toggle/">attr-toggle</a>
-      </dt>
+      <dd>Attribute shorthand for <AttrValue /> and <AttrToggle />.</dd>
+      <dt><AttrValue /></dt>
+      <dd>Longhand for setting the value of an attribute on an element.</dd>
+      <dt><AttrToggle /></dt>
       <dd>Toggle boolean attributes on an element.</dd>
       <dt>
         <a href="properties/event/">event</a>

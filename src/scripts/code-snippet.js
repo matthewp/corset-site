@@ -19,12 +19,12 @@ function CodeSnippet(state) {
 
     .code-snippet-copy {
       --copy-cb: bind(${copyToClipboard}, var(--code));
-      event: click var(--copy-cb);
+      event[click]: var(--copy-cb);
     }
 
     .code-snippet-copied-notification {
-      event: transitionend ${transitionEnd};
-      attr: "aria-hidden" ${hidden};
+      event[transitionend]: ${transitionEnd};
+      attr[aria-hidden]: ${hidden};
     }
   `;
 }

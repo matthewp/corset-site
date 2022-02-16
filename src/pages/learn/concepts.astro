@@ -34,11 +34,11 @@ import { API, Concepts, CustomProperties, Insertion, NodeJS, React, Var, Vue } f
       <p>We believe strongly that decoupling the backend from the frontend makes both better. The backend can be focused on the unique requirements of the application; the frontend can be <strong>smaller</strong> and leaner due to shedding the concerns of generating HTML (much of which is never interactive).</p>
       <Code slot="code" lang="css" code={`
 .login-form {
-  event: submit var(--handler);
+  event[submit]: var(--handler);
 }
 
 .login-form input[name=email] {
-  event: input var(--validate-email);
+  event[input]: var(--validate-email);
 }
 `} />
     </Block>
@@ -63,7 +63,7 @@ mount(document, state => {
   .login-form {
     --user: "Wilbur";
     --submit: bind(\${onsubmit}, var(--user));
-    event: submit var(--submit);
+    event[submit]: var(--submit);
   }
 });
 `} />

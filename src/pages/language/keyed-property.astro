@@ -1,6 +1,6 @@
 ---
-import { Page, Block, Code } from '../../components/DocPage.js';
-import { Attr, AttrToggle, AttrValue, ClassToggle, Prop, Data } from '../../components/Links.js';
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Attr, AttrToggle, AttrValue, CustomProperties, ClassToggle, Prop, Data, Identifier, Var } from '../../components/Links.js';
 ---
 
 <Page title="Keyed properties">
@@ -15,6 +15,38 @@ import { Attr, AttrToggle, AttrValue, ClassToggle, Prop, Data } from '../../comp
 input {
   attr[type]: "text";
 }
+`} />
+  </Block>
+  <Block>
+    <p>The key can either be an <Identifier /> or a <CustomProperties singular /> name. Custom property keys become like <Var plural />. This allows you to dynamically change the key based on variables within your sheet.</p>
+    <p>In this example a JavaScript variable <code>mode</code> is set to either <code>"light"</code> or <code>"dark"</code>. In our sheet we are setting up a class binding: <code>class-toggle[--mode]: true</code>. When <code>mode</code> changes, the value of this variable changes as well.</p>
+    <p>When it changes from <code>"light"</code> to <code>"dark"</code> it is equivalent to a binding changing from <code>class-toggle[light]: true</code> to <code>class-toggle[dark]: true</code>. When that happens the binding for <code>class-toggle[light]</code> no longer exists within the sheet, and therefore it is removed.</p>
+    <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+mount(document, state => {
+  const { mode = 'light' } = state;
+
+  const changeMode = () => {
+    state.mode = mode === 'light'
+      ? 'dark'
+      : 'light';
+  };
+
+  return sheet\`
+    #app {
+      --mode: \${mode};
+    }
+
+    body {
+      class-toggle[--mode]: true;
+    }
+
+    .change-mode {
+      event[click]: \${changeMode};
+    }
+  \`;
+});
 `} />
   </Block>
   <section>

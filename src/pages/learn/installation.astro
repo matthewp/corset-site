@@ -17,7 +17,7 @@ import { API, Concepts } from '../../components/Links.js';
 			<Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document.body, state => {
+mount(document, state => {
   const { name = 'Wilbur' } = state;
 
   return sheet\`
@@ -38,7 +38,7 @@ mount(document.body, state => {
 			<Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.npmPkg}';
 
-mount(document.body, state => {
+mount(document, state => {
   const { name = 'Wilbur' } = state;
 
   return sheet\`
