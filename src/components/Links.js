@@ -7,6 +7,7 @@ export { default as MultiBinding } from './Links/MultiBinding.astro';
 export { default as String } from './Links/String.astro';
 export { default as Boolean } from './Links/Boolean.astro';
 export { default as Properties } from './Links/Properties.astro';
+export { default as JavaScriptAPI } from './Links/JavaScript.astro';
 export { default as KeyedProperty } from './Links/KeyedProperty.astro';
 
 // Properties
@@ -39,6 +40,11 @@ export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 
 // Types
 export { default as Sheet } from './Links/Sheet.astro';
+
+// JavaScript API
+export { default as ExportSheet } from './Links/ExportSheet.astro';
+export { default as ExportMount } from './Links/ExportMount.astro';
+export { default as ExportRegisterCustomFunction } from './Links/ExportRegisterCustomFunction.astro';
 
 // Learn
 export { default as Concepts } from './Links/Concepts.astro';

@@ -1,0 +1,42 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { CustomFunctions, ExportMount, ExportSheet, ExportRegisterCustomFunction, Insertion, Installation } from '../../components/Links.js';
+---
+
+<Page title="JavaScript API">
+	<Block>
+    <p>{ info.project }'s JavaScript API is how you initiate sheets and bind to the DOM, as well as control behaviors within sheets.</p>
+  </Block>
+
+  <section>
+    <h2>Usage</h2>
+    <Block>
+      <p>The JavaScript API is used by importing the main module. <Installation titleCase /> goes through the various methods of using { info.project }.</p>
+      <p>Each of the below described exports are imported via the main module.</p>
+      <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+sheet\`
+  body {
+    class-toggle[js]: true;
+  }
+\`.update(document);
+`} />
+    </Block>
+  </section>
+
+  <section>
+    <h2>Exports</h2>
+    <p>These APIs are exported by the entrypoint module.</p>
+    <Block>
+      <dl>
+        <dt><ExportSheet /></dt>
+        <dd>The default export of the main module, defines a sheet with values (<Insertion long />) that is then used to update a root.</dd>
+        <dt><ExportMount /></dt>
+        <dd>Attach a sheet to a root element, binding it to that element. Provides a way to update when internal state changes.</dd>
+        <dt><ExportRegisterCustomFunction /></dt>
+        <dd>Register a <CustomFunctions singular /> that can be used in any sheet within your application.</dd>
+      </dl>
+    </Block>
+  </section>
+</Page>

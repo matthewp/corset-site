@@ -1,0 +1,36 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Insertion, MDNTaggedTemplate } from '../../components/Links.js';
+---
+
+<Page title="sheet">
+  <Block>
+    <p>The <strong>sheet</strong> method is used to create binding sheets in { info.project }. It is called <em>sheet</em> by convention, but is the default export of { info.project } and can be named whatever you prefer.</p>
+    <p>The method <code>sheet</code> is a <MDNTaggedTemplate /> function that takes a CSS-like DSL as its argument, along with <Insertion long plural />.</p>
+  </Block>
+  <section>
+    <h2>Syntax</h2>
+    <Block reverse>
+      <Code slot="code" lang="js" code={`
+let bindings = sheet\`
+  body {
+    class-toggle[js]: true;
+  }
+\`;
+`} />
+    </Block>
+    <h3>Return value</h3>
+    <Block>
+      <p><code>bindings</code> is an object containing a <code>update</code> method that will update a root element with the new values directed from the invocation of sheet.</p>
+      <Code slot="code" lang="js" code={`
+let bindings = sheet\`
+  body {
+    class-toggle[js]: true;
+  }
+\`; 
+
+bindings.update(document);
+`} />
+    </Block>
+  </section>
+</Page>

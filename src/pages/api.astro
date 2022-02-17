@@ -1,5 +1,6 @@
 ---
 import { Page, Block,  Code, info } from '../components/DocPage.js';
+import { JavaScriptAPI, Properties } from '../components/Links.js';
 ---
 
 <Page title="API">
@@ -10,13 +11,15 @@ import { Page, Block,  Code, info } from '../components/DocPage.js';
   <section>
     <h2>Reference</h2>
 
-    <dt>
-      <a href="properties/">Properties</a>
-    </dt>
-    <dd>Long and shorthand properties for binding to elements.</dd>
-    <dt>
-      <a href="functions/">Value Functions</a>
-    </dt>
-    <dd>Functions usable as values such as <code>var()</code> and <code>bind()</code>.</dd>
+    <dl>
+      <dt><Properties titleCase /></dt>
+      <dd>Long and shorthand properties for binding to elements.</dd>
+      <dt>
+        <a href="functions/">Value Functions</a>
+      </dt>
+      <dd>Functions usable as values such as <code>var()</code> and <code>bind()</code>.</dd>
+      <dt><JavaScriptAPI /></dt>
+      <dd>The Javascript API for Corset, allowing you to create sheets, mount to a root element, register custom functions, and more.</dd>
+    </dl>
   </section>
 </Page> 
