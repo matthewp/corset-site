@@ -100,6 +100,12 @@ article {
   padding: var(--size-4) var(--size-8);
 }
 
+@media(max-width: 520px) {
+  article {
+    padding: var(--size-4) var(--size-4);
+  }
+}
+
 .block-wrap {
   display: flex;
   flex-direction: row;
@@ -123,6 +129,11 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(var(--size-13), 1fr));
   grid-gap: var(--size-4);
   padding: var(--size-fluid-3);
+}
+
+.why-corset .explanation {
+  display: grid;
+  justify-items: center;
 }
 
 .why-corset .explanation > h2 {

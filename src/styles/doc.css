@@ -14,3 +14,9 @@ article {
 .doc-block-content p {
   margin-block: var(--size-fluid-1);
 }
+
+@media(max-width: 520px) {
+  article {
+    padding: var(--size-4) var(--size-4);
+  }
+}
