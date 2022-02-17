@@ -4,6 +4,7 @@ import NavHeader from '../components/NavHeader.astro';
 import Code from '../components/Code.astro';
 import Footer from '../components/Footer.astro';
 import { Installation } from '../components/Links.js';
+import PhillipsoftLogo from '../components/sponsors/PhillipsoftLogo.astro';
 import * as info from '../info.js';
 ---
 
@@ -15,9 +16,12 @@ import * as info from '../info.js';
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
 	<style global>
 		@import "../styles/main.css";
+    decorate-element { display: none; }
 	</style>
+  <script>function decorate(tag,template){customElements.define(tag,class extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){let root=this.shadowRoot;if(!root.firstChild){root.appendChild(document.importNode(template.content,true))}}})}customElements.define("decorate-element",class extends HTMLElement{connectedCallback(){let tag=this.getAttribute("tag");let template=this.firstElementChild;if(template){decorate(tag,template)}else{let mo=new MutationObserver(()=>{template=this.firstElementChild;if(template){mo.disconnect();decorate(tag,template)}});mo.observe(this,{childList:true})}}});</script>
 </head>
 <body class="welcome">
+  <PhillipsoftLogo />
 	<NavHeader title={ info.project } />
 	<header class="hero-header">
 		<section class="hero">
@@ -87,6 +91,28 @@ mount(document, state => {
 
     <a href="https://codepen.io/matthewp/pen/dyVeNrJ"><em>CodePen 👉</em></a>
 	</article>
+  <hr />
+  <article class="why-corset">
+  	<section class="explanation">
+      <h2>Expressive</h2>
+      <p>Inherits from CSS syntax, providing straightfoward ways to bind to DOM for every scenario you have.</p>
+    </section>
+    <section class="explanation">
+      <h2>Performant</h2>
+      <p>Optimized to only recompute when something changes in your sheet, preventing you from worrying about performance.</p>
+    </section>
+    <section class="explanation">
+      <h2>Decoupled</h2>
+      <p>Corset is based on progressive enhancement, an industry best practice, and doesn't care or need to know how you build your backend.</p>
+    </section>
+  </article>
+  <article class="sponsors">
+    <h2>Sponsors</h2>
+    <div class="sponsors-logos">
+      <div class="logo"><a href="https://phillipsoft.com/"><phillipsoft-logo></phillipsoft-logo></a></div>
+    </div>
+  </article>
+  <img class="splash-image" src={(await import('../images/splash-image.jpg')).default} />
   <Footer />
 </body>
 </html>

@@ -82,7 +82,8 @@ button.primary:hover, .button.primary:hover {
 .example {
   display: grid;
   justify-items: center;
-  padding-block: var(--size-fluid-6);
+  padding-top: var(--size-fluid-6);
+  padding-bottom: var(--size-fluid-3);
   gap: var(--size-fluid-4);
 }
 
@@ -110,4 +111,56 @@ article {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: var(--size-content-2);
+}
+
+hr {
+  margin-block: var(--size-fluid-3);
+  background-color: var(--cyan-2);
+}
+
+.why-corset {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-13), 1fr));
+  grid-gap: var(--size-4);
+  padding: var(--size-fluid-3);
+}
+
+.why-corset .explanation > h2 {
+  text-align: center;
+  margin-bottom: var(--size-3);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-5);
+}
+
+.why-corset .explanation p {
+  font-size: var(--font-size-1);
+  text-align: center;
+}
+
+/** Sponsors */
+.sponsors {
+  display: grid;
+  justify-content: center;
+}
+.sponsors-logos {
+  padding-block: var(--size-fluid-6);
+}
+.sponsors .logo {
+  display: grid;
+  background:linear-gradient(to bottom, var(--grape-3), var(--violet-3), var(--indigo-3), var(--cyan-3)) fixed;
+  border-radius: var(--radius-3);
+  justify-content: center;
+  padding: var(--size-2);
+}
+.sponsors h2 {
+  text-align: center;
+}
+.sponsors .logo a {
+  list-style-type: none;
+}
+
+.splash-image {
+  height: var(--size-13);
+  width: 100%;
+  object-fit: cover;
 }

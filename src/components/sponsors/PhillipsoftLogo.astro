@@ -1,0 +1,51 @@
+---
+const raw = `
+<style>
+  :host {
+    display: block;
+    --font-size: 40px;
+    --tilde-color: #982440;
+    --tilde-weight: 500;
+    --color: #102582;
+  }
+  .logo {
+    color: var(--color);
+    position: relative;
+    font-size: var(--font-size);
+    font-family: Times;
+  }
+
+  .logo-tilde-up, .logo-tilde-down {
+    color: var(--tilde-color);
+    font-weight: var(--tilde-weight);
+    user-select: none;
+  }
+
+  .logo-tilde-up {
+    position: absolute;
+    top: calc(0px - 33 * (var(--font-size) / 60));
+  }
+
+  .logo-tilde-up.logo-tilde-second {
+    top: calc(0px - 21 * (var(--font-size) / 60));
+  }
+
+  .logo-tilde-down {
+    position: absolute;
+    bottom: calc(0px - 24 * (var(--font-size) / 60));
+
+  }
+
+  .logo-tilde-down.logo-tilde-second {
+    bottom: -36px;
+    bottom: calc(0px - 36 * (var(--font-size) / 60));
+  }
+  </style>
+`
+---
+<decorate-element tag="phillipsoft-logo">
+<template>
+  <Fragment set:html={raw} />
+  <div class="logo"><span class="logo-tilde-up">~</span><span class="logo-tilde-down">~</span>Philli<span class="logo-tilde-up logo-tilde-second">~</span><span class="logo-tilde-down logo-tilde-second">~</span>psoft</div>
+</template>
+</decorate-element>
