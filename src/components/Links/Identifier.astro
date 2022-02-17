@@ -1,2 +1,4 @@
-
-<a href="language/identifier/">identifier</a>
+---
+const { plural } = Astro.props;
+---
+<a href="language/identifier/">identifier{plural ? 's' : ''}</a>

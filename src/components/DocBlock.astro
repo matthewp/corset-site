@@ -1,4 +1,7 @@
-<div class="doc-block">
+---
+const { reverse } = Astro.props;
+---
+<div class:list={{'doc-block': true, 'doc-block-reverse': reverse}}>
   <div class="doc-block-content">
     <div><slot></slot></div>
     <slot name="code"><div></div></slot>
@@ -16,15 +19,29 @@
   gap: var(--size-3);
 }
 
+.doc-block-reverse > .doc-block-content {
+  flex-direction: row-reverse;
+}
+
 .doc-block-content > div {
   flex-grow: 2.5;
   flex-shrink: 0;
   flex-basis: 320px;
 }
 
+.doc-block-reverse > .doc-block-content > div {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
 .doc-block-content > :nth-child(2) {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 380px;
+}
+
+.doc-block-reverse > .doc-block-content > :nth-child(2) {
+  flex-grow: 2.5;
+  flex-shrink: 0;
 }
 </style>

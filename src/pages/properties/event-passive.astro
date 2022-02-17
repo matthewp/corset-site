@@ -1,0 +1,33 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Boolean, Event } from '../../components/Links.js';
+---
+
+<Page title="event-passive">
+  <Block>
+    <p>The <strong>event-passive</strong> longhand property specifies if the event should a passive listener.</p>
+    <p>event-passive is a longhand version of the <Event /> shorthand's 4th argument. In both forms it accepts a <Boolean /> value.</p>
+  </Block>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>Specify a listener as <em>passive</em> tells the browser that it will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault</a>. This allows the browser to improve the performance of scrolling, as it knows that scrolling can continue while the event listener is run.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+mount(document, () => {
+  const onscroll = () => {
+    // Browser continues to let user scroll..
+  };
+
+  return sheet\`
+    body {
+      event-listener[scroll]: \${onscroll};
+      event-passive[scroll]: true;
+    }
+  \`;
+});
+`} />
+    </Block>
+  </section>
+</Page>

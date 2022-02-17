@@ -1,0 +1,23 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Event, EventCapture, EventPassive } from '../../components/Links.js';
+---
+
+<Page title="event-listener">
+  <Block>
+    <p>The <strong>event-listener</strong> longhand property specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventListener">EventListener</a> (such as a callback function) for an event.</p>
+    <p>The longhand syntax is usually used in conjunction with one of the event options, such as <EventCapture /> or <EventPassive />. When only setting a listener, the shorthand <Event /> is more commonly used.</p>
+  </Block>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>In this example, the longhand event-listener is used with <EventCapture /> to specify that the event should be handled in the capture phase.</p>
+      <Code slot="code" lang="css" code={`
+.outer {
+  event-listener[click]: var(--close-modal);
+  event-capture[click]: true;
+}
+`} />
+    </Block>
+  </section>
+</Page>
