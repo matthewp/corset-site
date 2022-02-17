@@ -6,7 +6,13 @@ import {
   Each,
   EachKey,
   EachItems,
-  EachTemplate
+  EachTemplate,
+  Event,
+  EventListener,
+  EventCapture,
+  EventOnce,
+  EventPassive,
+  EventSignal
 } from '../../components/Links.js';
 ---
 
@@ -37,10 +43,18 @@ import {
       <dd>Longhand for setting the value of an attribute on an element.</dd>
       <dt><AttrToggle /></dt>
       <dd>Toggle boolean attributes on an element.</dd>
-      <dt>
-        <a href="properties/event/">event</a>
-      </dt>
+      <dt><Event /></dt>
       <dd>Add event listeners on an element.</dd>
+      <dt><EventListener /></dt>
+      <dd>Specifiers the listener for the event.</dd>
+      <dt><EventCapture /></dt>
+      <dd>Specifies if the listener should be called during the capture phase.</dd>
+      <dt><EventOnce /></dt>
+      <dd>Specifies that the listener should be called only once.</dd>
+      <dt><EventPassive /></dt>
+      <dd>Specifies that the listener will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>.</dd>
+      <dt><EventSignal /></dt>
+      <dd>Specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> that will remove the listener when aborted.</dd>
       <dt>
         <a href="properties/prop/">prop</a>
       </dt>

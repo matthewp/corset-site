@@ -1,16 +1,17 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { AttrToggle, CustomProperties, Identifier, MultiBinding, String, Var } from '../../components/Links.js';
-import * as info from '../../info.js';
+import {
+  EventListener, EventCapture, EventOnce, EventPassive, EventSignal,
+  CustomProperties, KeyedProperty,
+  MultiBinding
+} from '../../components/Links.js';
 ---
 
 <Page title="event">
   <Block>
-    <p>The <strong>event</strong> property is used to add event listeners to an element.</p>
-    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element.</p>
-    <p>The property takes two values per binding, the <strong>first value</strong> is the event name. It can be passed via an <Identifier />, a <String />, or any other way a string can be passed such as a <Var />.</p>
+    <p>The <strong>event</strong> shorthand property is used to add event listeners to an element.</p>
+    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element. It is also a <KeyedProperty />, allowing separating events into multiple declarations by event name.</p>
   </Block>
-
   <Block>
     <p>For each binding there is a single listener. This means you can assign a listener to a <CustomProperties singular /> and override that property in a selector. When a binding no longer matches, the old event listener is removed.</p>
     <p>This example is a counter which can be in increment or decrement modes. By default it uses an increment handler (a callback function), but if in decrement mode a different handler is used instead.</p>
@@ -28,4 +29,47 @@ button {
 }
 `} />
   </Block>
+
+  <section>
+    <h2>Constituent properties</h2>
+    <Block>
+      <p>This property is a shorthand for the following longhand properties:</p>
+      <dt><EventListener /></dt>
+      <dd>Specifiers the listener for the event.</dd>
+      <dt><EventCapture /></dt>
+      <dd>Specifies if the listener should be called during the capture phase.</dd>
+      <dt><EventOnce /></dt>
+      <dd>Specifies that the listener should be called only once.</dd>
+      <dt><EventPassive /></dt>
+      <dd>Specifies that the listener will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>.</dd>
+      <dt><EventSignal /></dt>
+      <dd>Specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> that will remove the listener when aborted.</dd>
+    </Block>
+  </section>
+  <section>
+    <h2>Syntax</h2>
+    <Block reverse>
+      <Code lang="css" slot="code" code={`
+/* Set multiple listeners on an element */
+event:
+  click var(--onclick),
+  input var(--oninput);
+
+/* Set a single listener on an element */
+event[click]: var(--onclick);
+
+/* Set a capture listener on an element */
+event: click var(--onclick) true;
+
+/* Set a listener to only fire once */
+event: click var(--onclick) false true;
+
+/* Set a listener to be passive */
+event: click var(--onclick) false false true;
+
+/* Provide an AbortSignal for a listener */
+event click var(--onclick) false false false var(--signal);
+  `} />
+    </Block>
+  </section>
 </Page>

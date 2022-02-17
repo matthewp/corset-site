@@ -5,6 +5,7 @@ export { default as Identifier } from './Links/Identifier.astro';
 export { default as Insertion } from './Links/Insertion.astro';
 export { default as MultiBinding } from './Links/MultiBinding.astro';
 export { default as String } from './Links/String.astro';
+export { default as Boolean } from './Links/Boolean.astro';
 export { default as Properties } from './Links/Properties.astro';
 export { default as KeyedProperty } from './Links/KeyedProperty.astro';
 
@@ -20,6 +21,11 @@ export { default as EachKey } from './Links/EachKey.astro';
 export { default as EachItems } from './Links/EachItems.astro';
 export { default as EachTemplate } from './Links/EachTemplate.astro';
 export { default as Event } from './Links/Event.astro';
+export { default as EventListener } from './Links/EventListener.astro';
+export { default as EventCapture } from './Links/EventCapture.astro';
+export { default as EventOnce } from './Links/EventOnce.astro';
+export { default as EventPassive } from './Links/EventPassive.astro';
+export { default as EventSignal } from './Links/EventSignal.astro';
 export { default as Prop } from './Links/Prop.astro';
 
 // Functions

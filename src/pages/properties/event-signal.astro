@@ -1,0 +1,37 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Boolean, Event, EventListener } from '../../components/Links.js';
+---
+
+<Page title="event-signal">
+  <Block>
+    <p>The <strong>event-signal</strong> longhand property specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> for the listener. When the signal is aborted, the listener will no longer fire.</p>
+    <p>event-signal is a longhand version of the <Event /> shorthand's 5th argument.</p>
+  </Block>
+  <section>
+    <h2>Usage</h2>
+    <Block>
+      <p><strong>event-signal</strong> only works if a listener is also provided, either through the <Event /> shorthand, or <EventListener />.</p>
+      <p>Create an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">AbortController</a> and pass its <code>signal</code> property to the event-signal { info.project} property.</p>
+      <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+let informUser = () => { /* ... */ };
+
+let controller = new AbortController();
+
+sheet\`
+  .btn {
+    event-listener[click]: \${informUser};
+    event-signal[click]: \${controller.signal};
+  }
+\`.update(document);
+
+// Later...
+controller.abort();
+
+// The event listener will not be called.
+`} />
+    </Block>
+  </section>
+</Page>
