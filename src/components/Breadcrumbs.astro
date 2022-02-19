@@ -5,6 +5,7 @@ const base = pathname.slice(1);
 const parts = base.split('/');
 const section = parts[0];
 const titleize = s => s[0].toUpperCase() + s.slice(1);
+const preferedTitles = new Map([['javascript', 'JavaScript']]);
 
 // Only foldered pages should have a breadcrumb.
 const shouldHaveBreadcrumbs = parts.length > 2;
@@ -29,7 +30,7 @@ const shouldHaveBreadcrumbs = parts.length > 2;
   <nav class="breadcrumb" aria-label="breadcrumb">
     <ol>
       <li class="breadcrumb-item"><a href="api/">API</a></li>
-      <li class="breadcrumb-item"><a href={`${section}/`}>{ titleize(section) }</a></li>
+      <li class="breadcrumb-item"><a href={`${section}/`}>{ preferedTitles.has(section) ? preferedTitles.get(section) : titleize(section) }</a></li>
       <li class="breadcrumb-item" aria-current="page"><a href={ base }>{ title }</a></li>
     </ol>
   </nav>

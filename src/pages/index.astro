@@ -62,29 +62,33 @@ import * as info from '../info.js';
     <Code lang="js" title="JavaScript with Corset" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document, state => {
-  const { count = 0 } = state;
+mount(document, class {
+  count = 0;
 
-  return sheet\`
-    .counter {
-      --count: \${count};
-      --inc: \${() => state.count = count + 1};
-      --dec: \${() => state.count = count - 1};
-    }
-    
-    .count {
-      text: var(--count);
-    }
-    
-    .increment {
-      event[click]: var(--inc);
-    }
-    
-    .decrement {
-      attr-toggle[disabled]: \${count === 0};
-      event[click]: var(--dec);
-    }
-  \`;
+  bind() {
+    const { count } = this;
+
+    return sheet\`
+      .counter {
+        --count: \${count};
+        --inc: \${() => this.count = count + 1};
+        --dec: \${() => this.count = count - 1};
+      }
+      
+      .count {
+        text: var(--count);
+      }
+      
+      .increment {
+        event[click]: var(--inc);
+      }
+      
+      .decrement {
+        attr-toggle[disabled]: \${count === 0};
+        event[click]: var(--dec);
+      }
+    \`;
+  }
 });
 `} />
 		</div>

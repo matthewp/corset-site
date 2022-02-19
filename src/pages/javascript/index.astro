@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code, info } from '../../components/DocPage.js';
-import { CustomFunctions, ExportMount, ExportSheet, ExportRegisterCustomFunction, Insertion, Installation } from '../../components/Links.js';
+import { CustomFunctions, ExportMount, ExportSheet, ExportRegisterCustomFunction, ExportRegisterBehavior, Insertion, Installation } from '../../components/Links.js';
 ---
 
 <Page title="JavaScript API">
@@ -36,6 +36,8 @@ sheet\`
         <dd>Attach a sheet to a root element, binding it to that element. Provides a way to update when internal state changes.</dd>
         <dt><ExportRegisterCustomFunction /></dt>
         <dd>Register a <CustomFunctions singular /> that can be used in any sheet within your application.</dd>
+        <dt><ExportRegisterBehavior /></dt>
+        <dd>Register a behavior by name, that can be used in any sheet within your application.</dd>
       </dl>
     </Block>
   </section>

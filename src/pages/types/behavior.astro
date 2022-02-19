@@ -1,0 +1,78 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { ExportMount, BehaviorProp, Sheet } from '../../components/Links.js';
+---
+<Page title="behavior">
+  <Block>
+    <p>In { info.project } a <strong>behavior</strong> is a class that is used to mount to an element. It provides a sheet that is bound to the element and contains a component-like lifecycle.</p>
+    <p>A behavior is a plain class that does not extend any parent class, but only implements the behavior interface.</p>
+    <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+class Greeter {
+  bind() {
+    return sheet\`
+      text: "world";
+    \`;
+  }
+}
+`} />
+  </Block>
+  <section>
+    <h2>Static Properties</h2>
+    <dl>
+      <dt>inputProperties</dt>
+      <dd>
+        <Block>
+          <p>Specifies input properties that are taken from the parent sheet. When mounted as a top-level behavior via the <ExportMount /> API, inputProperties is ignored.</p>
+          <p>For behaviors mounted via the <BehaviorProp long /> inputProperties are updated when the values from the parent sheet change.</p>
+
+          <Code slot="code" lang="js" code={`
+  class Greeter {
+    static inputProperties = ['--name'];
+  }
+          `} />
+        </Block>
+      </dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Methods</h2>
+    <dl>
+      <dt>constructor</dt>
+      <dd>
+        <p>A behavior <em>can</em>, but is not required to, define a constructor. The constructor will receive as its first argument the <strong>inputProperties</strong>, if defined.</p>
+        <Code lang="js" code={`
+class DragNDrop {
+  static inputProperties = ['--target'];
+  constructor(props) {
+    this.target = props.get('--target');
+  }
+}
+`} />
+      </dd>
+      <dt>bind</dt>
+      <dd>
+        <Block>
+          <p>A behavior's <strong>bind</strong> method returns a <Sheet /> containing { info.project } bindings. The bind method is called any time inputProperties change, or after event listeners are called.</p>
+          <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+class Greeter {
+  static inputProperties = ['--target'];
+  bind(props) {
+    let name = props.get('--name');
+
+    return sheet\`
+      .name {
+        text: \${name};
+      }
+    \`;
+  }
+}     
+`} />
+        </Block>
+      </dd>
+    </dl>
+  </section>
+</Page>

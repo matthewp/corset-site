@@ -29,26 +29,35 @@ import * as info from '../../info.js';
 import sheet, { mount } from '${info.cdnURL}';
 import { fetchWithProgress } from './fetch.js';
 
-mount(document, state => {
-  const download = () => {
+mount(document, class {
+  value = 0;
+
+  constructor(props, update) {
+    this.update = update;
+  }
+
+  download() {
     fetchWithProgress(perc => {
-      state.value = perc;
+      this.value = perc;
+      this.update();
     });
-  };
+  }
 
-  const { value = 0 } = state;
+  bind() {
+    const { value = 0 } = this;
 
-  return sheet\`
-    progress {
-      attr[value]: \${value};
-      text: \${value};
-    }
+    return sheet\`
+      progress {
+        attr[value]: \${value};
+        text: \${value};
+      }
 
-    .download {
-      event[click]: \${download};
-    }
-  \`;
-})
+      .download {
+        event[click]: \${this.download};
+      }
+    \`;
+  }
+});
 `} />
     </Block>
   </section>

@@ -24,28 +24,32 @@ input {
     <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document, state => {
-  const { mode = 'light' } = state;
+mount(document, class {
+  mode = 'light';
 
-  const changeMode = () => {
-    state.mode = mode === 'light'
-      ? 'dark'
-      : 'light';
-  };
-
-  return sheet\`
-    #app {
-      --mode: \${mode};
+  changeMode() {
+      this.mode = this.mode === 'light'
+        ? 'dark'
+        : 'light';
     }
 
-    body {
-      class-toggle[--mode]: true;
-    }
+  bind() {
+    const { mode } = state;
 
-    .change-mode {
-      event[click]: \${changeMode};
-    }
-  \`;
+    return sheet\`
+      #app {
+        --mode: \${mode};
+      }
+
+      body {
+        class-toggle[--mode]: true;
+      }
+
+      .change-mode {
+        event[click]: \${this.changeMode};
+      }
+    \`;
+  }
 });
 `} />
   </Block>

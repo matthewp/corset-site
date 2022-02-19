@@ -3,6 +3,7 @@ import { Page, Block } from '../../components/DocPage.js';
 import {
   AttrValue,
   AttrToggle,
+  BehaviorProp,
   Each,
   EachKey,
   EachItems,
@@ -28,42 +29,42 @@ import {
     <p>These properties bind to the major parts of an element.</p>
     <Block>
       <dl>
-      <dt>
-        <a href="properties/text/">text</a>
-      </dt>
-      <dd>Set the text content of an element.</dd>
-      <dt>
-        <a href="properties/class-toggle/">class-toggle</a>
-      </dt>
-      <dd>Toggle classes on an element.</dd>
-      <dt>
-        <a href="properties/attr/">attr</a>
-      </dt>
-      <dd>Attribute shorthand for <AttrValue /> and <AttrToggle />.</dd>
-      <dt><AttrValue /></dt>
-      <dd>Longhand for setting the value of an attribute on an element.</dd>
-      <dt><AttrToggle /></dt>
-      <dd>Toggle boolean attributes on an element.</dd>
-      <dt><Event /></dt>
-      <dd>Add event listeners on an element.</dd>
-      <dt><EventListener /></dt>
-      <dd>Specifiers the listener for the event.</dd>
-      <dt><EventCapture /></dt>
-      <dd>Specifies if the listener should be called during the capture phase.</dd>
-      <dt><EventOnce /></dt>
-      <dd>Specifies that the listener should be called only once.</dd>
-      <dt><EventPassive /></dt>
-      <dd>Specifies that the listener will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>.</dd>
-      <dt><EventSignal /></dt>
-      <dd>Specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> that will remove the listener when aborted.</dd>
-      <dt>
-        <a href="properties/prop/">prop</a>
-      </dt>
-      <dd>Set properties on the DOM element.</dd>
-      <dt>
-        <a href="properties/data/">data</a>
-      </dt>
-      <dd>Set dataset values on an element.</dd>
+        <dt>
+          <a href="properties/text/">text</a>
+        </dt>
+        <dd>Set the text content of an element.</dd>
+        <dt>
+          <a href="properties/class-toggle/">class-toggle</a>
+        </dt>
+        <dd>Toggle classes on an element.</dd>
+        <dt>
+          <a href="properties/attr/">attr</a>
+        </dt>
+        <dd>Attribute shorthand for <AttrValue /> and <AttrToggle />.</dd>
+        <dt><AttrValue /></dt>
+        <dd>Longhand for setting the value of an attribute on an element.</dd>
+        <dt><AttrToggle /></dt>
+        <dd>Toggle boolean attributes on an element.</dd>
+        <dt><Event /></dt>
+        <dd>Add event listeners on an element.</dd>
+        <dt><EventListener /></dt>
+        <dd>Specifiers the listener for the event.</dd>
+        <dt><EventCapture /></dt>
+        <dd>Specifies if the listener should be called during the capture phase.</dd>
+        <dt><EventOnce /></dt>
+        <dd>Specifies that the listener should be called only once.</dd>
+        <dt><EventPassive /></dt>
+        <dd>Specifies that the listener will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>.</dd>
+        <dt><EventSignal /></dt>
+        <dd>Specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> that will remove the listener when aborted.</dd>
+        <dt>
+          <a href="properties/prop/">prop</a>
+        </dt>
+        <dd>Set properties on the DOM element.</dd>
+        <dt>
+          <a href="properties/data/">data</a>
+        </dt>
+        <dd>Set dataset values on an element.</dd>
       </dl>
     </Block>
   </section>
@@ -73,14 +74,16 @@ import {
     <p>These properties are used to define the behavior of an iterable (each).</p>
 
     <Block>
-      <dt><Each /></dt>
-      <dd>Shorthand property to define an each iteration.</dd>
-      <dt><EachItems /></dt>
-      <dd>Set the items (such an array) to iterate on.</dd>
-      <dt><EachTemplate /></dt>
-      <dd>Sets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a> element to use for each item in the iterable.</dd>
-      <dt><EachKey /></dt>
-      <dd>Defines a key to use to identify items in the iterable.</dd>
+      <dl>
+        <dt><Each /></dt>
+        <dd>Shorthand property to define an each iteration.</dd>
+        <dt><EachItems /></dt>
+        <dd>Set the items (such an array) to iterate on.</dd>
+        <dt><EachTemplate /></dt>
+        <dd>Sets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a> element to use for each item in the iterable.</dd>
+        <dt><EachKey /></dt>
+        <dd>Defines a key to use to identify items in the iterable.</dd> 
+      </dl>
     </Block>
   </section>
 
@@ -88,18 +91,18 @@ import {
     <h2>Other properties</h2>
     <p>These properties attach behavior to elements when matched.</p>
     <Block>
-      <dt>
-        <a href="properties/attach-template/">attach-template</a>
-      </dt>
-      <dd>Replace the children of an element with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a>.</dd>
-      <dt>
-        <a href="properties/mount/">mount</a>
-      </dt>
-      <dd>Mount an updater function to an element that defines state and a Corset sheet to attach.</dd>
-      <dt>
-        <a href="properties/custom-properties/">custom properties</a>
-      </dt>
-      <dd>Custom properties, like in CSS, use a <code>--dashed</code> syntax.</dd>
+      <dl>
+        <dt>
+          <a href="properties/attach-template/">attach-template</a>
+        </dt>
+        <dd>Replace the children of an element with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a>.</dd>
+        <dt><BehaviorProp /></dt>
+        <dd>Mount behaviors to an element.</dd>
+        <dt>
+          <a href="properties/custom-properties/">custom properties</a>
+        </dt>
+        <dd>Custom properties, like in CSS, use a <code>--dashed</code> syntax.</dd>
+      </dl>
     </Block>
   </section>
 </Page>

@@ -40,14 +40,16 @@ export default function() {
       <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document.body, () => {
-  const year = new Date().getFullYear();
+mount(document.body, class {
+  bind() {
+    const year = new Date().getFullYear();
 
-  return sheet\`
-    .year {
-      text: \${year};
-    }
-  \`;
+    return sheet\`
+      .year {
+        text: \${year};
+      }
+    \`;
+  }
 });
 `} />
     </Block>

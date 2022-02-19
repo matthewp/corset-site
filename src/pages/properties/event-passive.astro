@@ -15,17 +15,19 @@ import { Boolean, Event } from '../../components/Links.js';
       <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document, () => {
-  const onscroll = () => {
+mount(document, class {
+  onscroll() {
     // Browser continues to let user scroll..
-  };
+  }
 
-  return sheet\`
-    body {
-      event-listener[scroll]: \${onscroll};
-      event-passive[scroll]: true;
-    }
-  \`;
+  bind() {
+    return sheet\`
+      body {
+        event-listener[scroll]: \${this.onscroll};
+        event-passive[scroll]: true;
+      }
+    \`;
+  }
 });
 `} />
     </Block>

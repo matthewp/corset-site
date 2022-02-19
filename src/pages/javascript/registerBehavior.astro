@@ -1,0 +1,64 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Behavior } from '../../components/Links.js';
+---
+
+<Page title="registerBehavior">
+  <Block>
+    <p>The <strong>registerBehavior</strong> module export is used to register named <Behavior plural /> within the application. Named behaviors allow you to use the behavior without passing it by class.</p>
+  </Block>
+  <section>
+    <h2>Syntax</h2>
+    <Block reverse>
+      <Code slot="code" lang="js" code={`
+registerBehavior(name, class); 
+`} />
+    </Block>
+    <h3>Parameters</h3>
+    <dl>
+      <dt>name</dt>
+      <dd>A string representing the name to give the behavior. The name is global to the application; calling <code>registerBehavior</code> multiple times with the same name will result in it being overridden.</dd>
+      <dt>class</dt>
+      <dd>A <Behavior /> class.</dd>
+    </dl>
+    <h3>Return value</h3>
+    <p>None.</p>
+  </section>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>This is a counter behavior that can be used multiple times by name.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount, registerBehavior } from '${info.cdnURL}';
+
+registerBehavior('counter', class {
+  static inputProperties = ['--initial'];
+
+  constructor(props) {
+    this.count = props.get('--initial');
+  }
+
+  bind() {
+    const { count } = this;
+
+    return sheet\`
+      .count {
+        text: \${count};
+      }
+    \`;
+  }
+});
+
+mount(document, class {
+  bind() {
+    return sheet\`
+      .counter {
+        behavior: mount(counter);
+      }
+    \`;
+  }
+});
+`} />
+    </Block>
+  </section>
+</Page>
