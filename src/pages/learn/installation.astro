@@ -17,15 +17,18 @@ import { API, Concepts } from '../../components/Links.js';
 			<Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document, state => {
-  const { name = 'Wilbur' } = state;
+mount(document, class {
+  name = 'Wilbur';
 
-  return sheet\`
-    .name {
-      --name: \${name};
-      text: var(--name);
-    }
-  \`;
+  bind() {
+    const { name } = this;
+    return sheet\`
+      .name {
+        --name: \${name};
+        text: var(--name);
+      }
+    \`;
+	}
 });
 `}></Code>
 		</Block>
@@ -38,15 +41,19 @@ mount(document, state => {
 			<Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.npmPkg}';
 
-mount(document, state => {
-  const { name = 'Wilbur' } = state;
+mount(document, class {
+  name = 'Wilbur';
 
-  return sheet\`
-    .name {
-      --name: \${name};
-      text: var(--name);
-    }
-  \`;
+  bind() {
+    const { name } = this;
+
+    return sheet\`
+      .name {
+        --name: \${name};
+        text: var(--name);
+      }
+    \`;
+  }
 });
 `} />
 		</Block>

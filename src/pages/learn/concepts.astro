@@ -53,17 +53,21 @@ import { API, Concepts, CustomProperties, Insertion, NodeJS, React, Var, Vue } f
       <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 
-mount(document, state => {
-  const onsubmit = async (user, ev) => {
+mount(document, class {
+  async onsubmit(user, ev) {
     ev.preventDefault();
     await saveToDB();
-    state.user = user;
+    this.user = user;
   }
 
-  .login-form {
-    --user: "Wilbur";
-    --submit: bind(\${onsubmit}, var(--user));
-    event[submit]: var(--submit);
+  bind() {
+    return sheet\`
+      .login-form {
+        --user: "Wilbur";
+        --submit: bind(\${onsubmit}, var(--user));
+        event[submit]: var(--submit);
+      }
+    \`;
   }
 });
 `} />

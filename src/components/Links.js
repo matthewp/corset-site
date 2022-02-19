@@ -14,6 +14,7 @@ export { default as KeyedProperty } from './Links/KeyedProperty.astro';
 export { default as Attr } from './Links/Attr.astro';
 export { default as AttrToggle } from './Links/AttrToggle.astro';
 export { default as AttrValue } from './Links/AttrValue.astro';
+export { default as BehaviorProp } from './Links/BehaviorProp.astro';
 export { default as ClassToggle } from './Links/ClassToggle.astro';
 export { default as CustomProperties } from './Links/CustomProperties.astro';
 export { default as Data } from './Links/Data.astro';
@@ -39,12 +40,14 @@ export { default as Var } from './Links/Var.astro';
 export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 
 // Types
+export { default as Behavior } from './Links/Behavior.astro';
 export { default as Sheet } from './Links/Sheet.astro';
 
 // JavaScript API
 export { default as ExportSheet } from './Links/ExportSheet.astro';
 export { default as ExportMount } from './Links/ExportMount.astro';
 export { default as ExportRegisterCustomFunction } from './Links/ExportRegisterCustomFunction.astro';
+export { default as ExportRegisterBehavior } from './Links/ExportRegisterBehavior.astro';
 
 // Learn
 export { default as Concepts } from './Links/Concepts.astro';

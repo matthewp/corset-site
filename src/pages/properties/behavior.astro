@@ -1,0 +1,71 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Get, Sheet, Var } from '../../components/Links.js';
+import * as info from '../../info.js';
+---
+<Page title="behavior">
+  <Block>
+    <p>The <strong>behavior</strong> property is used to attach a behavior class to an element. It is equivalent to using the <a href="javascript/mount/">mount import</a> of the { info.project } package.</p>
+    <p>A behavior class is like a component in a template-based framework. The class is created when the binding takes effect and defines a <strong>bind</strong> method that returns a sheet object.</p>
+  </Block>
+  <Block>
+    <p>Use <strong>behavior</strong> when you have a block of HTML that needs behavior and is repeated multiple times. You do not need to use behaviors in these cases, but it can help with breaking up your app into smaller pieces.</p>
+    <p>Here we have a block of HTML that includes a counter widget.</p>
+    <Code slot="code" lang="html" code={`
+<div class="counter">
+  Count is <span class="count"></span>
+  
+  <button type="button" class="increment">Increment</button>
+</div>
+`} />
+  </Block>
+  <Block>
+    <p>To bind a behavior, in the top-level mount point, use the <strong>behavior</strong> property when targeting the element countaining the counter widget.</p>
+    <p>The <em>value</em> of mount is a behavior class. This is a class that defines a <strong>bind</strong> method that returns a <Sheet />.</p>
+    <p>The method runs when the parent sheet updates or at the end of event listeners. In this example state is changing in the click event handler <code>increment</code>. It first checks to see if the instance has a count, and if not increment the initial value rather than the previous count.</p>
+    <p>Like in component frameworks, a behavior can receive <strong>props</strong>. This is defined through the static <strong>inputProperties</strong> array. Here the initial value is passed via the <code>--initial</code> var.</p>
+    <Code slot="code" lang="js" code = {`
+import sheet, { mount } from '${info.cdnURL}';
+
+class Counter {
+  static inputProperties = ['--count'];
+
+  constructor(props) {
+    this.count = props.get('--count');
+  }
+
+  increment() {
+    this.count++;
+  }
+
+  bind() {
+    const { count } = this;
+
+    return sheet\`
+      .count {
+        --count: \${count};
+        text: var(--count);
+      }
+
+      .increment {
+        --cb: \${this.increment};
+        event: click var(--cb);
+      }
+    \`;
+  }
+
+
+}
+
+mount(document.body, class {
+  bind() {
+    return sheet\`
+      .counter {
+        behavior: mount(\${Counter});
+      }
+    \`;
+  }
+});
+`} />
+  </Block>
+</Page>

@@ -42,15 +42,18 @@ registerCustomFunction('--add-two', class {
   }
 });
 
-mount(document, () => {
-  return sheet\`
-    #app {
-      --start: \${3};
-    }
-    .result {
-      text: --add-two(\${1}, \${2});
-    }
-  \`;
+mount(document, class {
+  bind() {
+    return sheet\`
+      #app {
+        --start: \${3};
+      }
+
+      .result {
+        text: --add-two(\${1}, \${2});
+      }
+    \`;
+  }
 });
 
 `} />

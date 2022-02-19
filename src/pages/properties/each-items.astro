@@ -21,15 +21,16 @@ const todos = [
   { id: 3, label: 'Wash the dishes' }
 ];
 
-mount(document.body, () => {
-  return sheet\`
-    .todos {
-      each-items: \${todos};
-      each-template: select(#todo-template);
-    }
-  \`;
-})
-    
+mount(document.body, class {
+  bind() {
+    return sheet\`
+      .todos {
+        each-items: \${todos};
+        each-template: select(#todo-template);
+      }
+    \`;
+  }
+}); 
 `} />
   </Block>
   <Block>
