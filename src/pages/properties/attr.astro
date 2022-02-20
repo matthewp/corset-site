@@ -32,15 +32,12 @@ import { fetchWithProgress } from './fetch.js';
 mount(document, class {
   value = 0;
 
-  constructor(props, update) {
-    this.update = update;
+  constructor(props, { wrap }) {
+    this.setProgress = wrap(this.setProgress);
   }
 
   download() {
-    fetchWithProgress(perc => {
-      this.value = perc;
-      this.update();
-    });
+    fetchWithProgress(this.setProgress);
   }
 
   bind() {

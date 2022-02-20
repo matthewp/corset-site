@@ -41,6 +41,7 @@ export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 
 // Types
 export { default as Behavior } from './Links/Behavior.astro';
+export { default as BehaviorConstructor } from './Links/BehaviorConstructor.astro';
 export { default as Sheet } from './Links/Sheet.astro';
 
 // JavaScript API
@@ -54,7 +55,8 @@ export { default as Concepts } from './Links/Concepts.astro';
 export { default as Installation } from './Links/Installation.astro';
 
 // MDN
-export { default as MDNData } from './Links/Data.astro';
+export { default as MDNData } from './Links/MDN/Data.astro';
+export { default as MDNMap } from './Links/MDN/Map.astro';
 export { default as MDNTemplate } from './Links/MDN/Template.astro';
 export { default as MDNTaggedTemplate } from './Links/MDN/TaggedTemplate.astro';
 
