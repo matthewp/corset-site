@@ -54,6 +54,10 @@ import { API, Concepts, CustomProperties, Insertion, NodeJS, React, Var, Vue } f
 import sheet, { mount } from '${info.cdnURL}';
 
 mount(document, class {
+  constructor(props, { wrapAsync }) {
+    this.onsubmit = wrapAsync(this.onsubmit);
+  }
+
   async onsubmit(user, ev) {
     ev.preventDefault();
     await saveToDB();
@@ -64,7 +68,7 @@ mount(document, class {
     return sheet\`
       .login-form {
         --user: "Wilbur";
-        --submit: bind(\${onsubmit}, var(--user));
+        --submit: bind(\${this.onsubmit}, var(--user));
         event[submit]: var(--submit);
       }
     \`;

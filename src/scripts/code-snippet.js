@@ -1,32 +1,42 @@
 import sheet, { mount } from './corset.js';
 
-function CodeSnippet(state) {
-  const { hidden = true } = state;
+class CodeSnippet {
+  hidden = true;
 
-  function copyToClipboard(code) {
+  constructor(props, { wrap }) {
+    this.hide = wrap(this.hide);
+  }
+
+  copyToClipboard = (code) => {
     navigator.clipboard.writeText(code);
-    state.hidden = false;
+    this.hidden = false;
   }
 
-  function transitionEnd() {
-    setTimeout(() => { state.hidden = true; }, 500);
+  hide() {
+    this.hidden = true;
   }
 
-  return sheet`
-    .code-snippet {
-      --code: data(code);
-    }
+  transitionEnd() {
+    setTimeout(this.hide, 500);
+  }
 
-    .code-snippet-copy {
-      --copy-cb: bind(${copyToClipboard}, var(--code));
-      event[click]: var(--copy-cb);
-    }
+  bind() {
+    return sheet`
+      .code-snippet {
+        --code: data(code);
+      }
 
-    .code-snippet-copied-notification {
-      event[transitionend]: ${transitionEnd};
-      attr[aria-hidden]: ${hidden};
-    }
-  `;
+      .code-snippet-copy {
+        --copy-cb: bind(${this.copyToClipboard}, var(--code));
+        event[click]: var(--copy-cb);
+      }
+
+      .code-snippet-copied-notification {
+        event[transitionend]: ${this.transitionEnd};
+        attr[aria-hidden]: ${this.hidden};
+      }
+    `;
+  }
 }
 
 customElements.define('code-snippet', class extends HTMLElement {
