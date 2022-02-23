@@ -1,0 +1,60 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Behavior } from '../../components/Links.js';
+---
+
+<Page title="mount">
+  <Block>
+    <p>The <strong>mount()</strong> export registers a class to be mounted on a root element (or the document).</p>
+  </Block>
+  <section>
+    <h2>Syntax</h2>
+    <Block reverse>
+      <Code slot="code" lang="js" code={`
+mount(rootElement, class);
+`} />
+    </Block>
+    <h3>Parameters</h3>
+    <dl>
+      <dt>rootElement</dt>
+      <dd>An <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a> or the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">document</a> which is to have a behavior mounted on.</dd>
+      <dt>class</dt>
+      <dd>A <Behavior /> class that will be instantiated and bound to the rootElement.</dd>
+    </dl>
+    <h3>Return value</h3>
+    <p>None.</p>
+  </section>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>This is a basic example of using <strong>mount</strong>, binding a behavior to a form element.</p>
+      <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+
+const form = document.querySelector('form');
+
+mount(form, class {
+  let error = '';
+
+  checkLength(ev) {
+    if(ev.target.value.length < 8) {
+      this.error = 'Password must be at least 8 characters';
+    }
+  }
+
+  bind() {
+    return sheet\`
+      input[type=password] {
+        event[input]: \${this.checkLength};
+      }
+
+      input[type=password] + .error {
+        text: \${error};
+      }
+    \`;
+  }
+});
+`} />
+    </Block>
+  </section>
+</Page>

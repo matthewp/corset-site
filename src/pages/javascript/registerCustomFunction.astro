@@ -1,0 +1,59 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Behavior, CustomFunctions } from '../../components/Links.js';
+---
+
+<Page title="registerCustomFunction">
+  <Block>
+    <p>The <strong>registerCustomFunction</strong> module export is used to register named <CustomFunctions /> within the application. Custom functions created with registerCustomFunction can be used throughout your application without importing them for every use. They also provide access to the <strong>inputProperties</strong> API, allowing more advanced behavior.</p>
+  </Block>
+  <section>
+    <h2>Syntax</h2>
+    <Block reverse>
+      <Code slot="code" lang="js" code={`
+registerCustomFunction(name, class); 
+`} />
+    </Block>
+    <h3>Parameters</h3>
+    <dl>
+      <dt>name</dt>
+      <dd>A string name for the custom function. The name <strong>must</strong> be a valid custom property name. For example it must begin with <code>--</code>, such as <code>--add-one</code>.</dd>
+      <dt>class</dt>
+      <dd>A class representing the custom function. Can take <code>inputProperties</code> and must implement the <code>call</code> method.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Example</h2>
+    <Block>
+      <p>This custom function takes an input property and clamps a value.</p>
+      <Code slot="code" lang="js" code={`
+import { registerCustomFunction } from '${info.cdnURL}';
+
+registerCustomFunction('--clamp', class {
+  inputProperties = ['--min', '--max'];
+
+  call([num], _ctx, props) {
+    let min = props.get('--min');
+    let max = props.get('--max');
+    return Math.min(Math.max(num, min), max);
+  }
+});
+`} />
+    </Block>
+    <Block>
+      <p>Which could then be used like so:</p>
+      <Code slot="code" lang="js" code={`
+#app {
+  --min: 0;
+  --max: 10;
+}
+
+input {
+  prop[value]: --clamp(\${24});
+
+  /* This will be set to 10 */
+}
+`} />
+    </Block>
+  </section>
+</Page>
