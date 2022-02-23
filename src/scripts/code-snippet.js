@@ -3,8 +3,8 @@ import sheet, { mount } from './corset.js';
 class CodeSnippet {
   hidden = true;
 
-  constructor(props, { wrap }) {
-    this.hide = wrap(this.hide);
+  constructor(props, { rebind }) {
+    this.rebind = rebind;
   }
 
   copyToClipboard = (code) => {
@@ -12,12 +12,11 @@ class CodeSnippet {
     this.hidden = false;
   }
 
-  hide() {
-    this.hidden = true;
-  }
-
   transitionEnd() {
-    setTimeout(this.hide, 500);
+    setTimeout(() => {
+      this.hidden = true;
+      this.rebind();
+    }, 500);
   }
 
   bind() {

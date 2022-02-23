@@ -24,33 +24,20 @@ new Behavior(props, context);
         <dl class="ml-3 mt-1">
           <dt>element</dt>
           <dd>The element that the behavior is mounted on.</dd>
-          <dt>wrap</dt>
+          <dt>rebind</dt>
           <dd>
-            <p>Wraps a function so that it will be called within the behavior's instance, and rerun the <code>bind()</code> method afterwards.</p>
+            <p>Recalls the <code>bind()</code> method and updates bindings that have changed.</p>
             <Code lang="js" code={`
 class Item {
-  constructor(props, { wrap }) {
+  constructor(props, { rebind }) {
     // Calling this function will
     // call bind() immediately afterwards.
-    this.fn = wrap(() => {
-      this.value = 'bar';
-    });
-  }
-  bind() { /* ... */ }
-}
-`} />
-          </dd>
-          <dt>wrapAsync</dt>
-          <dd>
-            <p>Wraps an async sync function so that it will be called with the behavior's instance, and rerun the <code>bind()</code> method after the Promise resolves.</p>
-            <Code lang="js" code={`
-class UserPortal {
-  constructor(props, { wrapAsync }) {
-    this.fn = wrapAsync(this.getUser);
+    this.rebind = rebind;
   }
 
-  getUser() {
-   return await fetch('/api/users');
+  fn() {
+    this.value = 'bar';
+    this.rebind();
   }
 
   bind() { /* ... */ }

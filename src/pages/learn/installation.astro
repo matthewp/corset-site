@@ -28,7 +28,7 @@ mount(document, class {
         text: var(--name);
       }
     \`;
-	}
+  }
 });
 `}></Code>
 		</Block>
@@ -37,7 +37,7 @@ mount(document, class {
 	<section>
 		<h2>With npm</h2>
 		<Block>
-			<p>{ info.project } can be installed from <a href="https://www.npmjs.com/package/corset">npm</a> and used with any bundler. Install the <strong>{ info.npmPkg }</strong> on npm and import the default export like so:</p>
+			<p>{ info.project } can be installed from <a href="https://www.npmjs.com/package/corset">npm</a> and used with any bundler. Install the <a href="https://www.npmjs.com/package/corset"><strong>{ info.npmPkg }</strong> package</a> on npm and import the default export like so:</p>
 			<Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.npmPkg}';
 
@@ -46,7 +46,6 @@ mount(document, class {
 
   bind() {
     const { name } = this;
-
     return sheet\`
       .name {
         --name: \${name};
