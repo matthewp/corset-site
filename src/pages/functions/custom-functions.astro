@@ -37,7 +37,7 @@ import sheet, { mount, registerCustomFunction } from '${info.cdnURL}';
 
 registerCustomFunction('--add-two', class {
   static inputProperties = ['--start'];
-  call([a, b], ctx, props) {
+  call([a, b], props) {
     return a + b + props.get('--start');
   }
 });
