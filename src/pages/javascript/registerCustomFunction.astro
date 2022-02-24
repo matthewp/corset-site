@@ -32,7 +32,7 @@ import { registerCustomFunction } from '${info.cdnURL}';
 registerCustomFunction('--clamp', class {
   inputProperties = ['--min', '--max'];
 
-  call([num], _ctx, props) {
+  call([num], props) {
     let min = props.get('--min');
     let max = props.get('--max');
     return Math.min(Math.max(num, min), max);
