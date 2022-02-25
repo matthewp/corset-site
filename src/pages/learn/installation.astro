@@ -11,7 +11,11 @@ import { API, Concepts } from '../../components/Links.js';
 	<section>
 		<h2>With the CDN</h2>
 		<Block>	
-			<p>{ info.project } is accessible through a CDN at <strong>cdn.corset.dev</strong>. This is the easiest way to get started using it.</p>
+			<p>{ info.project } is accessible through a CDN at <strong>cdn.corset.dev</strong>. This is the easiest way to get started using it. The following URLs are available:</p>
+			<ul>
+				<li><strong>{ info.cdnURL }</strong> - This URL is the latest semver-compatible version of { info.project } for the current major version.</li>
+				<li><strong>{ info.cdnURLExact }</strong> - This URL is for the latest version of Corset. It's adviced to use this in production.</li>
+			</ul>
 			<p>The default export is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged template function</a> that takes a string of a CSS-like language.</p>
 
 			<Code slot="code" lang="js" code={`
