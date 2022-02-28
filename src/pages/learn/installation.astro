@@ -43,30 +43,34 @@ mount(document, class {
 		<Block>
 			<p>{ info.project } can be installed from <a href="https://www.npmjs.com/package/corset">npm</a> and used with any bundler. Install the <a href="https://www.npmjs.com/package/corset"><strong>{ info.npmPkg }</strong> package</a> on npm and import the default export like so:</p>
 			<Code slot="code" lang="js" code={`
-import sheet, { mount } from '${info.npmPkg}';
+import sheet, { mount } from '${info.npmPkg}';`} />
+		</Block>
+		<h3>Vite</h3>
+		<Block>
+			<p>{ info.project } uses some advanced features that Vite doesn't support correctly yet. You can configure Vite to work with Corset using these options in your <strong>vite.config.js</strong>:</p>
+			<Code slot="code" lang="js" code={`
+import { defineConfig } from 'vite';
 
-mount(document, class {
-  name = 'Wilbur';
-
-  bind() {
-    const { name } = this;
-    return sheet\`
-      .name {
-        --name: \${name};
-        text: var(--name);
-      }
-    \`;
-  }
+export default defineConfig({
+  build: {
+    target: 'esnext',
+  },
+  optimizeDeps: {
+    exclude: ['corset'],
+  },
 });
 `} />
 		</Block>
 	</section>
 
 	<section>
-		<h2>With CodePen</h2>
+		<h2>Online Editors</h2>
+		<h3>CodePen</h3>
 		<Block>
 			<p>You can use <a href="https://codepen.io/matthewp/pen/abyqPGw">this CodePen</a> as a starter for testing out ideas or creating demos with { info.project }.</p>
 		</Block>
+		<h3>StackBlitz</h3>
+		<p>This <a href="https://stackblitz.com/edit/vitejs-vite-zvunck">Corset Starter</a> project for <a href="https://stackblitz.com/">StackBlitz</a> is preconfigured and shows example usage.</p>
 	</section>
 
 	<section>
