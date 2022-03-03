@@ -1,0 +1,26 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { Attr, AttrToggle, AttrValue, KeyedProperty } from '../../components/Links.js';
+---
+
+<Page title="attr-value">
+  <Block>
+    <p>The <strong>attr-value</strong> property is used to set the value of an attribute. It is a longhand form of the shorthand property <Attr />. Normally to set an attribute value you would just use <Attr /> directly. attr-value is useful when you want to also add/remove the attribute via <AttrToggle /></p>
+    <p>attr-value is a <KeyedProperty />. The <strong>value</strong> is the right-hand side of the attribute to be set.</p>
+  </Block>
+  <Block>
+    <p>One use-case for attr-value is to control both the value and add/remove an attribute. In this example an input is acting both as a text and password input. When switched to password the <strong>placeholder</strong> attribute is removed.</p>
+    <Code slot="code" lang="css" code={`
+input {
+  attr[type]: text;
+  attr-value[placeholder]: "Username";
+}
+
+input.password {
+  attr[type]: password;
+  attr-toggle[placeholder]: false;
+}
+`} />
+
+  </Block>
+</Page>

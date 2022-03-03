@@ -1,0 +1,42 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { ExportMount, ExportRegisterCustomFunction } from '../../components/Links.js';
+---
+
+<Page title="TypeScript">
+  <Block>
+    <p>{ info.project } supports TypeScript out of the fox when you install the <a href="https://www.npmjs.com/package/corset">{ info.project }</a> package on npm.</p>
+    <p>When using the <ExportMount /> API and you should see intellisense as you type. However, TypeScript doesn't give great hints with bare classes like those used in { info.project }, so it can be helpful to pull in some types.</p>
+    <p>The <strong>MountedBehavior</strong> interface is used with <ExportMount /> to give full type completion. This example shows what you get after the types have been expanded. You only need to import and implement MountedBehavior.</p>
+    <Code slot="code" lang="js" code={`
+import type { MountedBehavior, BehaviorContext, SheetWithValues } from 'corset';
+import sheet, { mount } from 'corset';
+
+mount(document, class implements MountedBehavior {
+  bind(props: Map<string, any>, ctx: BehaviorContext): SheetWithValues {
+    return sheet\`
+      #app {
+        /** ... */
+      }
+    \`;
+  }
+});  
+`} />
+  </Block>
+  <section>
+    <h2>Custom functions</h2>
+    <Block>
+      <p>Similarly, when using custom functions via <ExportRegisterCustomFunction />, you can get better type support by implementing the <strong>ICorsetFunction</strong> interface.</p>
+      <Code slot="code" lang="js" code={`
+import type { ICorsetFunction, FunctionContext } from 'corset';
+import { registerCustomFunction } from 'corset';
+
+registerCustomFunction('--my-fn',  class implements ICorsetFunction {
+  call([a, b]: [string, string], props: Map<string, any>, context: FunctionContext) {
+      
+  }
+}); 
+`} />
+    </Block>
+  </section>
+</Page>

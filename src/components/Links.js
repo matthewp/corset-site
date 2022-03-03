@@ -53,6 +53,7 @@ export { default as ExportRegisterBehavior } from './Links/ExportRegisterBehavio
 // Learn
 export { default as Concepts } from './Links/Concepts.astro';
 export { default as Installation } from './Links/Installation.astro';
+export { default as TypeScript } from './Links/TypeScript.astro';
 
 // MDN
 export { default as MDNData } from './Links/MDN/Data.astro';

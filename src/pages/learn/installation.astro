@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code, info } from '../../components/DocPage.js';
-import { API, Concepts } from '../../components/Links.js';
+import { API, Concepts, TypeScript } from '../../components/Links.js';
 ---
 
 <Page title="Installation">
@@ -77,6 +77,7 @@ export default defineConfig({
 		<h2>Further reading</h2>
 		<Block>
 			<p>Now that you have { info.project } installed, read more about using { info.project }.</p>
+			<dl>
 			<dt>
 				<Concepts titleCase />
 			</dt>
@@ -85,6 +86,9 @@ export default defineConfig({
 				<API />
 			</dt>
 			<dd>Dive straight into the deep end and learn about the API, both on the JavaScript side and the DSL.</dd>
+			<dt><TypeScript /></dt>
+			<dd>Learn about the best way to take advantage of <a href="https://www.typescriptlang.org/">TypeScript</a> when using { info.project }.</dd>
+			</dl>
 		</Block>
 	</section>
 
