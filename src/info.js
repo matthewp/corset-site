@@ -9,7 +9,7 @@ const CDNURL_EXACT = version => `https://cdn.corset.dev/${version}/main.js`;
 const CDNWASMURL = version => `https://cdn.corset.dev/${version}/main.wasm`;
 
 export const major = 'v0';
-export const version = '0.8.14';
+export const version = '0.9.0';
 export const cdnURL = CDNURL(major);
 export const cdnURLExact = CDNURL_EXACT(version);
 export const cdnWasmURL = CDNWASMURL(version);
