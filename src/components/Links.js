@@ -29,6 +29,8 @@ export { default as EventOnce } from './Links/EventOnce.astro';
 export { default as EventPassive } from './Links/EventPassive.astro';
 export { default as EventSignal } from './Links/EventSignal.astro';
 export { default as Prop } from './Links/Prop.astro';
+export { default as StoreRoot } from './Links/StoreRoot.astro';
+export { default as StoreSet } from './Links/StoreSet.astro';
 
 // Functions
 export { default as Bind } from './Links/Bind.astro';
@@ -38,6 +40,8 @@ export { default as Item } from './Links/Item.astro';
 export { default as Select } from './Links/Select.astro';
 export { default as Var } from './Links/Var.astro';
 export { default as CustomFunctions } from './Links/CustomFunctions.astro';
+export { default as Store } from './Links/Store.astro';
+export { default as StoreGet } from './Links/StoreGet.astro';
 
 // Types
 export { default as Behavior } from './Links/Behavior.astro';
@@ -53,6 +57,7 @@ export { default as ExportRegisterBehavior } from './Links/ExportRegisterBehavio
 // Learn
 export { default as Concepts } from './Links/Concepts.astro';
 export { default as Installation } from './Links/Installation.astro';
+export { default as LearnStores } from './Links/LearnStores.astro';
 export { default as TypeScript } from './Links/TypeScript.astro';
 
 // MDN

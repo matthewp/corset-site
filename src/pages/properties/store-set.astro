@@ -1,0 +1,21 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { StoreGet, StoreRoot, LearnStores, Var } from '../../components/Links.js';
+---
+
+<Page title="store-set">
+  <Block>
+    <p>The <strong>store-set</strong> property is used to set a value within a store.</p>
+    <p>The values of store-set are the <strong>name</strong> of the store, a <strong>key</strong> for the map, and the <strong>value</strong> to be set, passed as a space-separated list.</p>
+    <p>See the <LearnStores /> guide to learn how to use store-set, along with the other properties/functions of stores.</p>
+  </Block>
+  <Block>
+    <p>store-set must follow the creation of a store via <StoreRoot />. It will rerun any time its input values change, which means if one of those values is a <Var />, changing its value will reflect in a new call for store-set.</p>
+    <Code slot="code" lang="css" code={`
+#app {
+  store-root: app;
+  store-set: app foo bar;
+}
+`} />
+  </Block>
+</Page>

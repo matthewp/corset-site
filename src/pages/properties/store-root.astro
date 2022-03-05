@@ -1,0 +1,24 @@
+---
+import { Page, Block, Code } from '../../components/DocPage.js';
+import { StoreGet, StoreSet, LearnStores } from '../../components/Links.js';
+---
+
+<Page title="store-root">
+  <Block>
+    <p>The <strong>store-root</strong> is used to create a store within a sheet. The <strong>value</strong> is the name of the store. Stores are named so that they can be referenced elsewhere via <StoreGet />, <StoreSet /> and within the JavaScript APIs.</p>
+    <p>See the <LearnStores /> guide to learn on how stores are used.</p>
+  </Block>
+  <Block>
+    <p>Stores can be set on any DOM element, and multiple stores can be created within a single sheet. By giving them seperate names, you can access them both for different use-cases.</p>
+    <Code slot="code" lang="css" code={`
+#app {
+  store-root: app;
+}
+
+.namer {
+  store-root: name;
+}
+`} />
+
+  </Block>
+</Page>
