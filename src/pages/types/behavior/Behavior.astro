@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code, info } from '../../../components/DocPage.js';
-import { Behavior, MDNMap } from '../../../components/Links.js';
+import { Behavior, LearnStores, MDNMap } from '../../../components/Links.js';
 ---
 <Page title="Behavior()">
   <Block>
@@ -24,6 +24,8 @@ new Behavior(props, context);
         <dl class="ml-3 mt-1">
           <dt>element</dt>
           <dd>The element that the behavior is mounted on.</dd>
+          <dt>stores</dt>
+          <dd>A <MDNMap /> of <LearnStores /> belonging to this behavior's sheet.</dd>
           <dt>rebind</dt>
           <dd>
             <p>Recalls the <code>bind()</code> method and updates bindings that have changed.</p>

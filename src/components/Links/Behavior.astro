@@ -1,6 +1,6 @@
 ---
-const { plural, hash } = Astro.props;
+const { capital, plural, hash } = Astro.props;
 ---
 <a href={`types/behavior/${hash ? '#' + hash : ''}`}>
-  <slot>behavior{ plural ? 's' : '' }</slot>
+  <slot>{ capital ? 'B' : 'b' }ehavior{ plural ? 's' : '' }</slot>
 </a>

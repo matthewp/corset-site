@@ -1,0 +1,23 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { MDNMap, StoreRoot, Var } from '../../components/Links.js';
+---
+
+<Page title="store-get()">
+  <Block>
+    <p>The <strong>store-get()</strong> function is used to get a value within a store. Since stores are a <MDNMap />, this is equivalent to <code>map.get(key)</code> in JavaScript.</p>
+    <p>The arguments of store-get are the <strong>name</strong> of the store and the <strong>key</strong> to get from the underlying map.</p>
+  </Block>
+  <Block>
+    <p>store-get works similar to <Var />, in that parents are searched for the store until it is found, so store-get can be used on an descendant of the element where <StoreRoot /> was set.</p>
+    <Code slot="code" lang="css" code={`
+#app {
+  store-root: app;
+}
+
+.child {
+  text: store-get(app, name);
+}
+`} />
+  </Block>
+</Page>

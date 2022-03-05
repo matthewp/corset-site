@@ -1,0 +1,4 @@
+---
+const { singular, lower } = Astro.props;
+---
+<a href="learn/stores/">{ lower ? 's' : 'S' }tore{ singular ? '' : 's'}</a>

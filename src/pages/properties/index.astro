@@ -13,7 +13,9 @@ import {
   EventCapture,
   EventOnce,
   EventPassive,
-  EventSignal
+  EventSignal,
+  StoreRoot,
+  StoreSet
 } from '../../components/Links.js';
 ---
 
@@ -98,6 +100,10 @@ import {
         <dd>Replace the children of an element with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">&lt;template&gt;</a>.</dd>
         <dt><BehaviorProp /></dt>
         <dd>Mount behaviors to an element.</dd>
+        <dt><StoreRoot /></dt>
+        <dd>Creates a <em>store</em> where state can be shared.</dd>
+        <dt><StoreSet /></dt>
+        <dd>Sets a (keyed) value in a store.</dd>
         <dt>
           <a href="properties/custom-properties/">custom properties</a>
         </dt>

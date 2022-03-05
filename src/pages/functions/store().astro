@@ -1,0 +1,21 @@
+---
+import { Page, Block,  Code } from '../../components/DocPage.js';
+import { Behavior, MDNMap, StoreRoot, Var } from '../../components/Links.js';
+---
+
+<Page title="store()">
+  <Block>
+    <p>The <strong>store()</strong> function is used to get a store (a <MDNMap />) within a sheet. The argument to store() is the store's <strong>name</strong>.</p>
+  </Block>
+  <Block>
+    <p>store() can be useful when you want to pass a store to a child <Behavior /> so that it can pass state back up to you.</p>
+    <Code slot="code" lang="css" code={`
+#information {
+  store-root: info;
+
+  --store: store(info);
+  behavior: mount(someBehavior);
+}
+`} />
+  </Block>
+</Page>

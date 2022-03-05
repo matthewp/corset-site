@@ -1,6 +1,12 @@
 ---
 import { Page, Block } from '../../components/DocPage.js';
-import { CustomFunctions, CustomProperties } from '../../components/Links.js';
+import {
+  CustomFunctions,
+  CustomProperties,
+  LearnStores,
+  StoreGet,
+  Store
+  } from '../../components/Links.js';
 ---
 
 <Page title="Value Functions">
@@ -73,6 +79,10 @@ import { CustomFunctions, CustomProperties } from '../../components/Links.js';
       <dd>
         Gets the value of a variable within an ancestor of the selected element (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var()">CSS var()</a>).
       </dd>
+      <dt><StoreGet /></dt>
+      <dd>Gets a <em>key</em> from a <LearnStores lower singular />.</dd>
+      <dt><Store /></dt>
+      <dd>Gets a named <LearnStores lower singular />.</dd>
       <dt>
         <CustomFunctions />
       </dt>
