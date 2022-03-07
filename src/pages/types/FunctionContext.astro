@@ -1,0 +1,75 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { LearnStores } from '../../components/Links.js';
+---
+<Page title="FunctionContext">
+  <Block>
+    <p>A <strong>FunctionContext</strong> is an object passed to custom functions, containing contextual information about the function call.</p>
+  </Block>
+  <section>
+    <h2>Properties</h2>
+    <dl>
+      <dt>element</dt>
+      <dd>The element the function is being called on.</dd>
+      <dt>rootElement</dt>
+      <dd>The root element that the sheet is mounted on.</dd>
+      <dt>createStore</dt>
+      <dd>
+        <Block reverse>
+          <p>A function that creates a <LearnStores singular /> that can be used to hold mutable state that can then be returned.</p>
+          <p>Here is a custom function that uses a store to resolve a promise.</p>
+          <Code slot="code" lang="js" code={`
+import { registerCustomFunction } from '${info.cdnURL}';
+
+registerCustomFunction('--resolve', class {
+  call([promise], _props, { createStore }) {
+    let store = createStore();
+    store.set('state', 'pending');
+    promise.then(
+      (value) => {
+        store.set('value', value);
+        store.set('state', 'resolved')
+      },
+      (error) {
+        store.set('reason', error);
+        store.set('state', 'rejected');
+      }
+    );
+    return store;
+  }
+})
+`} />
+        </Block>
+        <Block reverse>
+          <p>The function can then be used in a sheet like so:</p>
+          <Code slot="code" lang="js" code={`
+import sheet, { mount } from '${info.cdnURL}';
+import './resolve.js';
+
+mount(document, class {
+  bind() {
+    let promise = Promise.resolve(22);
+
+    return sheet\`
+      #app {
+        --promise: --resolve(\${promise});
+        --state: get(var(--promise), state);
+        class-toggle[--state]: true;
+      }
+
+      #app.pending {
+        text: "Resolving";
+      }
+
+      #app.resolved {
+        text: "Value: " get(var(--promise), value);
+      }
+    \`;
+  }
+})
+`} />
+        </Block>
+      </dd>
+    </dl>
+  </section>
+</Page>

@@ -1,0 +1,48 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { ExportRegisterCustomFunction, FunctionContext } from '../../components/Links.js';
+---
+<Page title="custom function">
+  <Block>
+    <p>In { info.project } a <strong>custom function</strong> type is a class passed to <ExportRegisterCustomFunction />, to register a named custom function that can be used throughout your application.</p>
+    <p>A custom function is a plain class that does not extend any parent class, but only implements the custom function interface.</p>
+  </Block>
+  <section>
+    <h2>Static Properties</h2>
+    <dl>
+      <dt>inputProperties</dt>
+      <dd>
+        <Block>
+          <p>Specifies input properties that are taken from the parent sheet.</p>
+          
+
+          <Code slot="code" lang="js" code={`
+class MakeRequest {
+  static inputProperties = ['--endpoint'];
+}
+          `} />
+        </Block>
+      </dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Methods</h2>
+    <dl>
+      <dt>call</dt>
+      <dd>
+        <Block>
+          <p>A custom function's <strong>call</strong> method is called each time one of its dependent arguments changes.</p>
+          <p>The arguments to call are:</p>
+          <dl class="ml-3">
+            <dt>args: any[]</dt>
+            <dd>An array of the <em>arguments</em> passed into the function.</dd>
+            <dt>props: Map&lt;string, any&gt;</dt>
+            <dd>A map containing the strings passed to <strong>inputProperties</strong> (such as <code>--type</code>), and the values being the values found within the sheet.</dd>
+            <dt>context: <FunctionContext /></dt>
+            <dd>The function's context object, containing contextual information about where the function is called.</dd>
+          </dl>
+        </Block>
+      </dd>
+    </dl>
+  </section>
+</Page>

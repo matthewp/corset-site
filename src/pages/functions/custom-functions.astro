@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { CustomProperties } from '../../components/Links.js';
+import { CustomFunction, CustomProperties, ExportRegisterCustomFunction } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 <Page title="custom functions">
@@ -31,7 +31,14 @@ import * as info from '../../info.js';
     <h2>registerCustomFunction</h2>
     <Block>
       <p>A separate JavaScript API exists for defining functions outside of the sheet. This provides lower-level access to both the <strong>rootElement</strong> (the element that the sheet is mounted on) and the <strong>element</strong> (where the function is bound).</p>
-      <p>Additionally, defining custom functions with <strong>registerCustionFunction</strong> allows defining <strong>inputProperties</strong>, which are received via a map.</p>
+      <p>Additionally, defining custom functions with <ExportRegisterCustomFunction /> allows defining <strong>inputProperties</strong>, which are received via a map.</p>
+      <h3>See also:</h3>
+      <dl>
+        <dt><ExportRegisterCustomFunction /></dt>
+        <dd>The API used to register custom functions with access to inputProperties, etc.</dd>
+        <dt><CustomFunction /></dt>
+        <dd>The definition of the class passed to registerCustomFunction.</dd>
+      </dl>
       <Code slot="code" lang="js" code={`
 import sheet, { mount, registerCustomFunction } from '${info.cdnURL}';
 

@@ -47,6 +47,9 @@ export { default as StoreGet } from './Links/StoreGet.astro';
 export { default as Behavior } from './Links/Behavior.astro';
 export { default as BehaviorConstructor } from './Links/BehaviorConstructor.astro';
 export { default as Sheet } from './Links/Sheet.astro';
+export { default as CustomFunction } from './Links/CustomFunction.astro';
+export { default as CustomFunctionConstructor } from './Links/CustomFunctionConstructor.astro';
+export { default as FunctionContext } from './Links/FunctionContext.astro';
 
 // JavaScript API
 export { default as ExportSheet } from './Links/ExportSheet.astro';
