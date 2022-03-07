@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code, info } from '../../components/DocPage.js';
-import { Behavior, StoreRoot, StoreSet, Store, StoreGet, MDNMap, Var } from '../../components/Links.js';
+import { Behavior, StoreRoot, StoreSet, Store, StoreGet, MDNMap, Var, FunctionContext, CustomFunction } from '../../components/Links.js';
 ---
 
 <Page title="Stores">
@@ -136,18 +136,33 @@ mount(document, class {
       <p>However stores are the best option for sharing this type of data. Simply create a store within the parent sheet using <StoreRoot />. Then pass that store down using an inputProperty as you would pass any other value to a child behavior. Use <Store /> to get the store within your sheet.</p>
       <p>The child can then trigger rebinds within the parent by setting values on that store.</p>
       <Code slot="code" lang="css" code={`
+#app {
+  store-root: app;
+}
+
+.counter {
+  --store: store(app);
+  behavior: mount(counter);
+}
+
+.sibling {
+  text: "Count: " store-get(app, count);
+}
+`} />
+    </Block>
+    <Block>
+      <p>As the child behavior changes and sets value to the store with map.set(key, value), the parent behavior will update to reflect those changes.</p>
+    </Block>
+    <h3>Custom functions that reflect state changes</h3>
+    <Block>
+    <p>Custom functions can be a nice way to control state outside of a behavior. A custom function can create a store with the <strong>createStore</strong> function on the <FunctionContext /> and return that store. Changes will reflect back into the sheet as state changes.</p>
+    <p>Here the <code>--fetch</code> <CustomFunction /> is returning a state that gets updating as the state of the fetch request changes. The sheet is able to use that state to control a class.</p>
+    <p>This pattern makes it simple to express loading states in { info.project }. See <a href="https://codepen.io/matthewp/pen/qBVvZWr">the example</a> in action.</p>
+    <Code slot="code" lang="css" code={`
 #movies {
-  /* Create the store */
-  store-root: request;
-
-  /* Pass required inputProperties */
-  --endpoint: "/api/movies";
-  --store: store(request);
-  behavior: mount(fetch);
-
-  /* Get state passed from the behavior */
-  --fetch-state: store-get(request, state);
-  --fetch-value: store-get(request, value);
+  --request: --fetch("/api/movies");
+  --fetch-state: get(var(--request), state);
+  --fetch-value: get(var(--request), value);
 
   /* Set a dynamic class from the fetch state */
   class-toggle[--fetch-state]: true;
@@ -162,9 +177,6 @@ mount(document, class {
   each: var(--fetch-value) select(#movies-template);
 }
 `} />
-    </Block>
-    <Block>
-      <p>As the child behavior changes and sets value to the store with map.set(key, value), the parent behavior will update to reflect those changes.</p>
     </Block>
     <h3>Storing initial DOM data</h3>
     <Block>
