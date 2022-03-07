@@ -1,33 +1,36 @@
 import sheet, { mount } from './corset.js';
 
 class CodeSnippet {
-  hidden = true;
-
-  constructor(props, { rebind }) {
-    this.rebind = rebind;
+  get hidden() {
+    return this.stores?.get('app')?.get('hidden') ?? true;
   }
 
-  copyToClipboard = (code) => {
+  constructor(props, { rebind, stores }) {
+    this.rebind = rebind;
+    this.stores = stores;
+  }
+
+  copyToClipboard() {
+    let code = this.stores.get('app')?.get('code');
     navigator.clipboard.writeText(code);
-    this.hidden = false;
+    this.stores.get('app').set('hidden', false);
   }
 
   transitionEnd() {
     setTimeout(() => {
-      this.hidden = true;
-      this.rebind();
+      this.stores.get('app').set('hidden', true);
     }, 500);
   }
 
   bind() {
     return sheet`
       .code-snippet {
-        --code: data(code);
+        store-root: app;
+        store-set: app code data(code);
       }
 
       .code-snippet-copy {
-        --copy-cb: bind(${this.copyToClipboard}, var(--code));
-        event[click]: var(--copy-cb);
+        event[click]: ${this.copyToClipboard};
       }
 
       .code-snippet-copied-notification {
