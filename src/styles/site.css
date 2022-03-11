@@ -20,3 +20,13 @@ body {
 .corset-logo {
   fill: var(--corset-logo-color);
 }
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color: var(--grey-8);
+  }
+
+  h1,h2,h3,h4,h5,h6,dt {
+    color: var(--grape-7);
+  }
+}
