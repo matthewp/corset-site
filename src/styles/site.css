@@ -18,7 +18,14 @@ body {
 }
 
 .corset-logo {
-  fill: var(--corset-logo-color);
+ fill: var(--corset-logo-color);
+ 
+ stroke:#3f2f35;
+}
+
+.corset-logo rect {
+  stroke-width: 12;
+  border-radius: var(--radius-2);
 }
 
 @media (prefers-color-scheme: dark) {
