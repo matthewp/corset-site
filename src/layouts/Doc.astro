@@ -5,8 +5,9 @@ import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import * as info from '../info.js';
 import npath from 'node:path';
+import "../styles/doc.css";
 
-const { url } = Astro.request;
+const url = new URL(Astro.request.url);
 const { title } = Astro.props;
 
 const base = npath.relative(url.pathname, '/') || '.';
@@ -18,9 +19,6 @@ const base = npath.relative(url.pathname, '/') || '.';
   <base href={base}>
 	<CommonHead />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
-	<style global>
-    @import "../styles/doc.css";
-	</style>
   <link rel="preload" as="fetch" href={info.cdnWasmURL} crossorigin>
 </head>
 <body class="doc-page">

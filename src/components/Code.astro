@@ -1,5 +1,5 @@
 ---
-import { Prism } from 'astro/components';
+import { Prism } from '@astrojs/prism';
 import CopyIcon from './icons/Copy.astro';
 
 const { lang, code: raw, title } = Astro.props;
@@ -20,8 +20,10 @@ const code = raw.trim();
     </div>
   </figure>
 </code-snippet>
-<script type="module" src="../scripts/code-snippet.js" hoist></script>
-<style global>
+<script>
+  import "../scripts/code-snippet.js";
+</script>
+<style is:global>
 code-snippet {
   display: block;
 }
