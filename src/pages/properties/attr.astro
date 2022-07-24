@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { AttrValue, AttrToggle, MultiBinding, KeyedProperty } from '../../components/Links.js';
+import { AttrValue, AttrToggle, MultiBinding } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 
@@ -24,7 +24,6 @@ import * as info from '../../info.js';
     </Block>
     <Block>
       <p>Using <strong>attr</strong> we can set the value as the progress changes.</p>
-      <p>This example uses attr as a <KeyedProperty />, but it can also be used without the key instead.</p>
       <Code slot="code" lang="js" code={`
 import sheet, { mount } from '${info.cdnURL}';
 import { fetchWithProgress } from './fetch.js';
@@ -50,12 +49,12 @@ mount(document, class {
 
     return sheet\`
       progress {
-        attr[value]: \${value};
+        attr: value \${value};
         text: \${value};
       }
 
       .download {
-        event[click]: \${this.download};
+        event: click \${this.download};
       }
     \`;
   }

@@ -54,7 +54,7 @@ mount(document, class {
       #app {
         --promise: --resolve(\${promise});
         --state: get(var(--promise), state);
-        class-toggle[--state]: true;
+        class-toggle: var(--state) true;
       }
 
       #app.pending {

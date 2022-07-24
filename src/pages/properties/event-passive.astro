@@ -23,8 +23,8 @@ mount(document, class {
   bind() {
     return sheet\`
       body {
-        event-listener[scroll]: \${this.onscroll};
-        event-passive[scroll]: true;
+        event-listener: scroll \${this.onscroll};
+        event-passive: scroll true;
       }
     \`;
   }

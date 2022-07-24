@@ -19,14 +19,16 @@ import {
     <p>These functions take parameters, such as insertion values or custom variables and manipulate them to calculate a response.</p>
 
     <Block>
-      <dt>
-        <a href="functions/bind()/">bind()</a>
-      </dt>
-      <dd>Creates a function with the first <code>N</code> arguments bound.</dd>
-      <dt>
-        <a href="functions/get()/">get()</a>
-      </dt>
-      <dd>Gets a value from an object (like the dot-syntax in JavaScript).</dd>
+      <dl>
+        <dt>
+          <a href="functions/bind()/">bind()</a>
+        </dt>
+        <dd>Creates a function with the first <code>N</code> arguments bound.</dd>
+        <dt>
+          <a href="functions/get()/">get()</a>
+        </dt>
+        <dd>Gets a value from an object (like the dot-syntax in JavaScript).</dd>
+      </dl>
     </Block>
   </section>
 
@@ -35,10 +37,12 @@ import {
     <p>These functions allow you to extract values from the DOM.</p>
 
     <Block>
-      <dt>
-        <a href="functions/data()/">data()</a>
-      </dt>
-      <dd>Gets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">dataset</a> value of an element (equivalent to <code>el.dataset.*</code>).</dd>
+      <dl>
+        <dt>
+          <a href="functions/data()/">data()</a>
+        </dt>
+        <dd>Gets the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">dataset</a> value of an element (equivalent to <code>el.dataset.*</code>).</dd>
+      </dl>
     </Block>
   </section>
 
@@ -47,18 +51,20 @@ import {
     <p>These functions are scoped to within a single item within an each clause.</p>
 
     <Block>
-      <dt>
-        <a href="functions/item()/">item()</a>
-      </dt>
-      <dd>
-        Gets the current item within the each iteration.
-      </dd>
-      <dt>
-        <a href="functions/index()/">index()</a>
-      </dt>
-      <dd>
-        Gets the current (zero-based) index within the each iteration.
-      </dd>
+      <dl>
+        <dt>
+          <a href="functions/item()/">item()</a>
+        </dt>
+        <dd>
+          Gets the current item within the each iteration.
+        </dd>
+        <dt>
+          <a href="functions/index()/">index()</a>
+        </dt>
+        <dd>
+          Gets the current (zero-based) index within the each iteration.
+        </dd>
+      </dl>
     </Block>
   </section>
 
@@ -67,28 +73,30 @@ import {
     <p>These functions operate on the entire sheet and can be used to get values within that context.</p>
 
     <Block>
-      <dt>
-        <a href="functions/select()/">select()</a>
-      </dt>
-      <dd>
-        Selects an element using a selector that is scoped from the root element of the sheet.
-      </dd>
-      <dt>
-        <a href="functions/var()/">var()</a>
-      </dt>
-      <dd>
-        Gets the value of a variable within an ancestor of the selected element (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var()">CSS var()</a>).
-      </dd>
-      <dt><StoreGet /></dt>
-      <dd>Gets a <em>key</em> from a <LearnStores lower singular />.</dd>
-      <dt><Store /></dt>
-      <dd>Gets a named <LearnStores lower singular />.</dd>
-      <dt>
-        <CustomFunctions />
-      </dt>
-      <dd>
-        Functions defined as <CustomProperties />, but usable as functions.
-      </dd>
+      <dl>
+        <dt>
+          <a href="functions/select()/">select()</a>
+        </dt>
+        <dd>
+          Selects an element using a selector that is scoped from the root element of the sheet.
+        </dd>
+        <dt>
+          <a href="functions/var()/">var()</a>
+        </dt>
+        <dd>
+          Gets the value of a variable within an ancestor of the selected element (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var()">CSS var()</a>).
+        </dd>
+        <dt><StoreGet /></dt>
+        <dd>Gets a <em>key</em> from a <LearnStores lower singular />.</dd>
+        <dt><Store /></dt>
+        <dd>Gets a named <LearnStores lower singular />.</dd>
+        <dt>
+          <CustomFunctions />
+        </dt>
+        <dd>
+          Functions defined as <CustomProperties />, but usable as functions.
+        </dd>
+      </dl>
     </Block>
   </section>
 </Page> 

@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Identifier, KeyedProperty, MultiBinding, String, Var } from '../../components/Links.js';
+import { Identifier, MultiBinding, String, Var } from '../../components/Links.js';
 ---
 
 <Page title="class-toggle">
@@ -30,17 +30,6 @@ import { Identifier, KeyedProperty, MultiBinding, String, Var } from '../../comp
     admin var(--is-admin),
     "dark-mode" var(--dark-mode);
 }
-`} />
-    </Block>
-  </section>
-  <section>
-    <h2>Setting a class with key syntax</h2>
-    <Block>
-      <p>class-toggle is a <KeyedProperty /> and class names can be specified by keys. This makes it easier to distinguish bindings when needing to specify several classes with conditions on an element.</p>
-      <Code slot="code" lang="js" code={`
-.section {
-  class-toggle[high-contrast]: true;
-} 
 `} />
     </Block>
   </section>

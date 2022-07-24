@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Get, Var, Identifier } from '../../components/Links.js';
+import { Identifier } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 
@@ -15,11 +15,11 @@ import * as info from '../../info.js';
       <p>Here we are toggling a class to be shown or not depending on an attribute selector.</p>
       <Code slot="code" lang="css" code={`
 body[mode=dark] {
-  class-toggle[highlight]: false;
+  class-toggle: highlight false;
 }
 
 body.high-contrast {
-  class-toggle[highlight]: true;
+  class-toggle: highlight true;
 }
 `} />
     </Block>

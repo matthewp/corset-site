@@ -1,0 +1,25 @@
+---
+import { Page, Block,  Code, info } from '../../components/DocPage.js';
+import { ClassToggle } from '../../components/Links.js';
+---
+
+<Page title="revert-sheet">
+    <Block>
+        <p>The <strong>revert-sheet</strong> global value is used to revert values to their initial state before the sheet was bound to.</p>
+        <p>Using revert-sheet will <em>not</em> removing classes, attributes, and other things that were in place before the sheet was bound, or was set outside of the sheet (such as using the DOM APIs directly).</p>
+    </Block>
+    <Block>
+        <p>The <strong>revert-sheet</strong> keyword can be used by any property. Here it is being used in conjunction with <ClassToggle /> to remove all of the classes added.</p>
+        <p>When the second selector matches the classes one, two, and three will be removed, and the class four will be added.</p>
+        <Code slot="code" lang="css" code={`
+#app {
+  class-toggle: one true, two true, three true;
+}
+
+#app[initialized] {
+  class-toggle: all revert-sheet;
+  class-toggle: four true;
+}
+`} />
+    </Block>
+</Page>

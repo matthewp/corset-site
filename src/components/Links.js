@@ -8,7 +8,6 @@ export { default as String } from './Links/String.astro';
 export { default as Boolean } from './Links/Boolean.astro';
 export { default as Properties } from './Links/Properties.astro';
 export { default as JavaScriptAPI } from './Links/JavaScript.astro';
-export { default as KeyedProperty } from './Links/KeyedProperty.astro';
 
 // Properties
 export { default as Attr } from './Links/Attr.astro';
@@ -42,6 +41,9 @@ export { default as Var } from './Links/Var.astro';
 export { default as CustomFunctions } from './Links/CustomFunctions.astro';
 export { default as Store } from './Links/Store.astro';
 export { default as StoreGet } from './Links/StoreGet.astro';
+
+// Global values
+export { default as RevertSheet } from './Links/RevertSheet.astro';
 
 // Types
 export { default as Behavior } from './Links/Behavior.astro';

@@ -45,7 +45,7 @@ mount(form, class {
   bind() {
     return sheet\`
       input[type=password] {
-        event[input]: \${this.checkLength};
+        event: input \${this.checkLength};
       }
 
       input[type=password] + .error {

@@ -1,0 +1,23 @@
+---
+import { Page, Block,  Code, info } from '../../components/DocPage.js';
+import { ClassToggle, MultiBinding } from '../../components/Links.js';
+---
+
+<Page title="all">
+    <Block>
+      <p>The <strong>all</strong> global value is used to select all values in a <MultiBinding /> sheet.</p>
+    </Block>
+    <Block>
+      <p>Here the all keyword is used to set all previous class bindings to false, removing them.</p>
+      
+      <Code slot="code" lang="css" code={`
+#app {
+  class-toggle: one true, two true, three true;
+}
+
+#app[initialized] {
+  class-toggle: all false;
+}
+`} />
+    </Block>
+</Page>

@@ -22,8 +22,8 @@ let controller = new AbortController();
 
 sheet\`
   .btn {
-    event-listener[click]: \${informUser};
-    event-signal[click]: \${controller.signal};
+    event-listener: click \${informUser};
+    event-signal: click \${controller.signal};
   }
 \`.update(document);
 

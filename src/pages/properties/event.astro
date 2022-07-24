@@ -2,18 +2,18 @@
 import { Page, Block, Code } from '../../components/DocPage.js';
 import {
   EventListener, EventCapture, EventOnce, EventPassive, EventSignal,
-  CustomProperties, KeyedProperty,
-  MultiBinding
+  CustomProperties, Insertion, BehaviorProp,
+  MultiBinding, RevertSheet
 } from '../../components/Links.js';
 ---
 
 <Page title="event">
   <Block>
     <p>The <strong>event</strong> shorthand property is used to add event listeners to an element.</p>
-    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element. It is also a <KeyedProperty />, allowing separating events into multiple declarations by event name.</p>
+    <p>The event is a <MultiBinding /> and can be used to set multiple listeners on the same element.</p>
   </Block>
   <Block>
-    <p>For each binding there is a single listener. This means you can assign a listener to a <CustomProperties singular /> and override that property in a selector. When a binding no longer matches, the old event listener is removed.</p>
+    <p>You can assign a listener to an event via a <CustomProperties singular />, via an <Insertion />, or any other method, and override that property in a selector. When a binding no longer matches, the old event listener is removed.</p>
     <p>This example is a counter which can be in increment or decrement modes. By default it uses an increment handler (a callback function), but if in decrement mode a different handler is used instead.</p>
     <Code slot="code" lang="css" code={`
 #app {
@@ -25,7 +25,7 @@ import {
 }
 
 button {
-  event[click]: var(--onclick);
+  event: click var(--onclick);
 }
 `} />
   </Block>
@@ -57,9 +57,6 @@ event:
   click var(--onclick),
   input var(--oninput);
 
-/* Set a single listener on an element */
-event[click]: var(--onclick);
-
 /* Set a capture listener on an element */
 event: click var(--onclick) true;
 
@@ -70,8 +67,29 @@ event: click var(--onclick) false true;
 event: click var(--onclick) false false true;
 
 /* Provide an AbortSignal for a listener */
-event click var(--onclick) false false false var(--signal);
+event: click var(--onclick) false false false var(--signal);
   `} />
+    </Block>
+  </section>
+  <section>
+    <h2>Named events</h2>
+    <Block>
+      <p>Events can be named using a square bracket syntax. By giving an event a name you can set multiple events of the same <em>type</em> on an element.</p>
+      <p>This pattern isn't necessary most of the time and will only be used when you think there is a case of a conflict. One use-case for this syntax is if you are building a reusable <BehaviorProp />, that behavior can use named events internally to prevent conflicting with parent bindings.</p>
+    </Block>
+    <Block>
+      <p>In this example, here we are setting two click events. The name can then be used in another selector to modify it.  In this case we are using <RevertSheet /> to remove the event handler.</p>
+      <Code slot="code" lang="css" code={`
+form {
+  event:
+    [prevent] click var(--prevent-default),
+    [submit] click var(--submit-results);
+}
+
+form:not(.save-results) {
+  event: [submit] revert-sheet;
+}
+`} />
     </Block>
   </section>
 </Page>

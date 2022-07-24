@@ -1,12 +1,11 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Attr, AttrValue, KeyedProperty } from '../../components/Links.js';
+import { Attr, AttrValue } from '../../components/Links.js';
 ---
 
 <Page title="attr-toggle">
   <Block>
     <p>The <strong>attr-toggle</strong> property is used to toggle a boolean attribute. To set an attribute that contains a value, use the <Attr /> property instead.</p>
-    <p>attr-toggle is a <KeyedProperty />. The <strong>value</strong> is the condition on which the attribute should be added or removed.</p>
     <p>attr-toggle is a longhand property, the shorthand is <Attr />.</p>
   </Block>
   <Block>
@@ -14,7 +13,7 @@ import { Attr, AttrValue, KeyedProperty } from '../../components/Links.js';
     <p>In this example, the disabled attribute is being toggled on a button when a form is in a state where it cannot be submitted.</p>
     <Code slot="code" lang="css" code={`
 form .submit {
-  attr-toggle[disabled]: var(--invalid);
+  attr-toggle: disabled var(--invalid);
 }
 `} />
   </Block>
@@ -22,7 +21,7 @@ form .submit {
     <p>This is exactly equivalent to using the <Attr /> shorthand with an empty string at the <AttrValue />.</p>
     <Code slot="code" lang="css" code={`
 form .submit {
-  attr[disabled]: "" var(--invalid);
+  attr: disabled "" var(--invalid);
 }
 `} />
   </Block>

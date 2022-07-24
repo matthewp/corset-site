@@ -75,7 +75,7 @@ mount(document, class {
       #app {
         store-root: app;
 
-        event[loaded]: \${setFoo};
+        event: loaded \${setFoo};
       } 
     \`;
   }
@@ -115,7 +115,7 @@ mount(document, class {
       #app {
         store-root: app;
         store-set: app foo bar;
-        event[update]: \${updateAPI};
+        event: update \${updateAPI};
       }
     \`;
   }
@@ -165,7 +165,7 @@ mount(document, class {
   --fetch-value: get(var(--request), value);
 
   /* Set a dynamic class from the fetch state */
-  class-toggle[--fetch-state]: true;
+  class-toggle: var(--fetch-state) true;
 }
 
 #movies.pending {
@@ -210,7 +210,7 @@ mount(document, class {
       }
 
       button {
-        event[click]: \${increment};
+        event: click \${increment};
       }
     \`;
   }

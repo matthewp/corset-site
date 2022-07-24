@@ -1,6 +1,6 @@
 ---
 import { Page, Block, Code } from '../../components/DocPage.js';
-import { Attr, ClassToggle, Event, Prop, Data, KeyedProperty } from '../../components/Links.js';
+import { Attr, ClassToggle, Event, Prop, Data } from '../../components/Links.js';
 import * as info from '../../info.js';
 ---
 
@@ -20,34 +20,6 @@ input {
 }
 `} />
   </Block>
-  <section>
-    <h2>Keyed properties</h2>
-    <Block>
-      <p>All of the multi-binding properties are also <KeyedProperty plural />. This means they instead of listing all of the values in a single declaration, you can separate them into multiple decorations per key.</p>
-      <Code slot="code" lang="css" code={`
-input {
-  attr[type]: "text";
-  attr[placeholder]: "Your username";
-  attr[value]: var(--username);
-}`} />
-    </Block>
-    <Block>
-      <p>When you use the comma-separated form it will override existing bindings.</p>
-      <p>In this example the <code>id</code> attribute will be <em>removed</em> because the multi-binding form does not include a value for <code>id</code>. This aligns with how similar properties work in CSS.</p>
-      <Code slot="code" lang="css" code={`
-input {
-  attr[id]: "name";
-}
-
-input {
-  attr:
-    type "text",
-    placeholder "Your username",
-    value var(--username);
-}
-`} />
-    </Block>
-  </section>
   <section>
     <h2>Reference</h2>
     <Block>

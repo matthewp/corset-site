@@ -16,7 +16,7 @@ import * as info from '../../info.js';
       <p>Data properties are often used for passing application data between components. This website uses a data property to pass the raw code sample so that it can be copied to the clipboard.</p>
       <Code slot="code" lang="css" code={`
 .code-snippet {
-  data[code]: var(--code-example);
+  data: code var(--code-example);
 }
 `} />
     </Block>
