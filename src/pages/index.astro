@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import { Installation } from '../components/Links.js';
 import PhillipsoftLogo from '../components/sponsors/PhillipsoftLogo.astro';
 import * as info from '../info.js';
+import "../styles/main.css";
 ---
 
 <html lang="en">
@@ -14,8 +15,7 @@ import * as info from '../info.js';
 	<title>{ info.project } - Declarative reactive UI without the complexity of SPAs</title>
 	<base href=".">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-night-owl@1.4.0/build/style.min.css">
-	<style global>
-		@import "../styles/main.css";
+	<style is:global>
     decorate-element { display: none; }
 	</style>
   <script>function decorate(tag,template){customElements.define(tag,class extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){let root=this.shadowRoot;if(!root.firstChild){root.appendChild(document.importNode(template.content,true))}}})}customElements.define("decorate-element",class extends HTMLElement{connectedCallback(){let tag=this.getAttribute("tag");let template=this.firstElementChild;if(template){decorate(tag,template)}else{let mo=new MutationObserver(()=>{template=this.firstElementChild;if(template){mo.disconnect();decorate(tag,template)}});mo.observe(this,{childList:true})}}});</script>

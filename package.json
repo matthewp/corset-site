@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev --experimental-static-build",
-    "build": "astro build --experimental-static-build",
+    "dev": "astro dev",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.23.7"
+    "@astrojs/prism": "^0.6.1",
+    "astro": "1.0.0-beta.73"
   }
 }

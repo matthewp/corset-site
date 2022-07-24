@@ -1,6 +1,6 @@
 ---
 const { title } = Astro.props;
-const pathname = Astro.request.url.pathname;
+const pathname = new URL(Astro.request.url).pathname;
 const base = pathname.slice(1);
 const parts = base.split('/');
 const section = parts[0];
@@ -10,7 +10,7 @@ const preferedTitles = new Map([['javascript', 'JavaScript']]);
 // Only foldered pages should have a breadcrumb.
 const shouldHaveBreadcrumbs = parts.length > 2;
 ---
-<style global>
+<style is:global>
   .breadcrumb ol {
     list-style-type: none;
     padding: 0;

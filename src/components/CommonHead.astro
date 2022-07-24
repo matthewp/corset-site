@@ -1,36 +1,37 @@
 ---
 import * as info from '../info.js';
 import socialPathname from '../images/social.png';
+import "../styles/site.css";
 
 const title = 'Corset - declarative, reactive UI';
 const description = 'Reactive UI without the complexity of SPA frameworks. Use any backend you like; bind to the HTML you already produced.';
 const socialUrl = new URL(socialPathname, Astro.site);
+const canonicalURL = new URL(new URL(Astro.request.url).pathname, Astro.site);
 ---
-<style global>
+<style is:global>
   @import "https://unpkg.com/open-props";
   @import "https://unpkg.com/open-props/normalize.min.css";
-  @import "../styles/site.css";
 </style>
 <meta charset="utf-8">
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 <link rel="sitemap" href="/sitemap.xml">
-<link rel="canonical" href={Astro.request.canonicalURL}>
+<link rel="canonical" href={canonicalURL}>
 
 <meta name="viewport" content="width=device-width">
 <meta name="generator" content={info.generator}>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content={Astro.request.canonicalURL}>
+<meta property="og:url" content={canonicalURL}>
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:image" content={socialUrl}>
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content={Astro.request.canonicalURL}>
+<meta property="twitter:url" content={canonicalURL}>
 <meta property="twitter:title" content={title}>
 <meta property="twitter:description" content={description}>
 <meta property="twitter:image" content={socialUrl}>
