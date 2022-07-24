@@ -81,12 +81,12 @@ mount(document, class {
       }
       
       .increment {
-        event[click]: var(--inc);
+        event: click var(--inc);
       }
       
       .decrement {
-        attr-toggle[disabled]: \${count === 0};
-        event[click]: var(--dec);
+        attr-toggle: disabled \${count === 0};
+        event: click var(--dec);
       }
     \`;
   }

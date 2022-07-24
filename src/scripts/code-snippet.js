@@ -5,7 +5,7 @@ class CodeSnippet {
     return this.stores?.get('app')?.get('hidden') ?? true;
   }
 
-  constructor(props, { rebind, stores }) {
+  constructor(_props, { rebind, stores }) {
     this.rebind = rebind;
     this.stores = stores;
   }
@@ -30,12 +30,12 @@ class CodeSnippet {
       }
 
       .code-snippet-copy {
-        event[click]: ${this.copyToClipboard};
+        event: click ${this.copyToClipboard};
       }
 
       .code-snippet-copied-notification {
-        event[transitionend]: ${this.transitionEnd};
-        attr[aria-hidden]: ${this.hidden};
+        event: transitionend ${this.transitionEnd};
+        attr: aria-hidden ${this.hidden};
       }
     `;
   }

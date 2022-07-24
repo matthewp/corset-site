@@ -14,8 +14,8 @@ import { Boolean, Event, EventListener } from '../../components/Links.js';
       <p>In this example, the longhand event-once is used with <EventListener /> to specify that the listener should only be called once.</p>
       <Code slot="code" lang="css" code={`
 .deprecated {
-  event-listener[click]: var(--warn-user);
-  event-once[click]: true;
+  event-listener: click var(--warn-user);
+  event-once: click true;
 }
 `} />
     </Block>

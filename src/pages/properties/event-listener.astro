@@ -14,8 +14,8 @@ import { Event, EventCapture, EventPassive } from '../../components/Links.js';
       <p>In this example, the longhand event-listener is used with <EventCapture /> to specify that the event should be handled in the capture phase.</p>
       <Code slot="code" lang="css" code={`
 .outer {
-  event-listener[click]: var(--close-modal);
-  event-capture[click]: true;
+  event-listener: click var(--close-modal);
+  event-capture: click true;
 }
 `} />
     </Block>
