@@ -2,7 +2,7 @@
 import { Page, Block, Code } from '../../components/DocPage.js';
 import {
   EventListener, EventCapture, EventOnce, EventPassive, EventSignal,
-  CustomProperties, Insertion, BehaviorProp,
+  EventTarget, CustomProperties, Insertion, BehaviorProp,
   MultiBinding, RevertSheet
 } from '../../components/Links.js';
 ---
@@ -45,6 +45,8 @@ button {
       <dd>Specifies that the listener will not call <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>.</dd>
       <dt><EventSignal /></dt>
       <dd>Specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> that will remove the listener when aborted.</dd>
+      <dt><EventTarget /></dt>
+      <dd>Specifies the target of the event.</dd>
       </dl>
     </Block>
   </section>
@@ -68,6 +70,9 @@ event: click var(--onclick) false false true;
 
 /* Provide an AbortSignal for a listener */
 event: click var(--onclick) false false false var(--signal);
+
+/* Provide a Target for the event */
+event: click var(--onclick) false false false var(--signal) var(--window);
   `} />
     </Block>
   </section>

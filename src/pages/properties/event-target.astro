@@ -1,0 +1,28 @@
+---
+import { Page, Block, Code, info } from '../../components/DocPage.js';
+import { Boolean, Event, EventListener } from '../../components/Links.js';
+---
+
+<Page title="event-target">
+  <Block>
+    <p>The <strong>event-target</strong> longhand property specifies an <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a>. By default the target of event is the selected element.</p>
+    <p>Using event-target allows you to specify a different target, such as the <code>window</code> object, that cannot be selected.</p>
+    <p>event-target is a longhand version of the <Event /> shorthand's 6th argument.</p>
+  </Block>
+  <section>
+    <h2>Usage</h2>
+    <Block>
+      <p><strong>event-target</strong> takes any event listener. In this case the window object, to listen to its popstate event.</p>
+      <Code slot="code" lang="js" code={`
+import sheet from '${info.cdnURL}';
+
+sheet\`
+  .btn {
+    event: popstate $\{ev => console.log('popstate', ev)};
+    event-target: popstate $\{window};
+  }
+\`.update(document);
+`} />
+    </Block>
+  </section>
+</Page>
