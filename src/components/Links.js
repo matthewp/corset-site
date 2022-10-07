@@ -27,6 +27,7 @@ export { default as EventCapture } from './Links/EventCapture.astro';
 export { default as EventOnce } from './Links/EventOnce.astro';
 export { default as EventPassive } from './Links/EventPassive.astro';
 export { default as EventSignal } from './Links/EventSignal.astro';
+export { default as EventTarget } from './Links/EventTarget.astro';
 export { default as Prop } from './Links/Prop.astro';
 export { default as StoreRoot } from './Links/StoreRoot.astro';
 export { default as StoreSet } from './Links/StoreSet.astro';

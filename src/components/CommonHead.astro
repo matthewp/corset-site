@@ -20,7 +20,7 @@ const canonicalURL = new URL(new URL(Astro.request.url).pathname, Astro.site);
 <link rel="canonical" href={canonicalURL}>
 
 <meta name="viewport" content="width=device-width">
-<meta name="generator" content={info.generator}>
+<meta name="generator" content={Astro.generator}>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
